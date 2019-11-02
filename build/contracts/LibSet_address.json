@@ -1,12 +1,12 @@
 {
   "contractName": "LibSet_address",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol\":\"LibSet_address\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol\":{\"keccak256\":\"0xa2fa51139bd960b15357ccb48e9878245a05811eaa57ddb5f2f51ccb7743c0e5\",\"urls\":[\"bzz-raw://8f5af8c38eacb302f42c52027808d89f2dbe38207a50b7126fcb0a78ea973022\",\"dweb:/ipfs/QmNUc3vyYVmBeMaEyDHZPwCuft8dZoHXuFCnsWeuBMRdUm\"]}},\"version\":1}",
-  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820e94a21998dec4ff31f01b47c5dcd228a1207497bfdaf6fe6b442d1f480ff7ba764736f6c634300050c0032",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820e94a21998dec4ff31f01b47c5dcd228a1207497bfdaf6fe6b442d1f480ff7ba764736f6c634300050c0032",
-  "sourceMap": "25:1499:2:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
-  "deployedSourceMap": "25:1499:2:-;;;;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\nlibrary LibSet_address\n{\n\tstruct set\n\t{\n\t\taddress[] values;\n\t\tmapping(address => uint256) indexes;\n\t}\n\n\tfunction length(set storage _set)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _set.values.length;\n\t}\n\n\tfunction at(set storage _set, uint256 _index)\n\tinternal view returns (address)\n\t{\n\t\treturn _set.values[_index - 1];\n\t}\n\n\tfunction indexOf(set storage _set, address _value)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _set.indexes[_value];\n\t}\n\n\tfunction contains(set storage _set, address _value)\n\tinternal view returns (bool)\n\t{\n\t\treturn indexOf(_set, _value) != 0;\n\t}\n\n\tfunction content(set storage _set)\n\tinternal view returns (address[] memory)\n\t{\n\t\treturn _set.values;\n\t}\n\n\tfunction add(set storage _set, address _value)\n\tinternal returns (bool)\n\t{\n\t\tif (contains(_set, _value))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t\t_set.indexes[_value] = _set.values.push(_value);\n\t\treturn true;\n\t}\n\n\tfunction remove(set storage _set, address _value)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_set, _value))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\tuint256 i    = indexOf(_set, _value);\n\t\tuint256 last = length(_set);\n\n\t\tif (i != last)\n\t\t{\n\t\t\taddress swapValue = _set.values[last - 1];\n\t\t\t_set.values[i - 1] = swapValue;\n\t\t\t_set.indexes[swapValue] = i;\n\t\t}\n\n\t\tdelete _set.indexes[_value];\n\t\t--_set.values.length;\n\n\t\treturn true;\n\t}\n\n\tfunction clear(set storage _set)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = 0; i < _set.values.length; ++i)\n\t\t{\n\t\t\tdelete _set.indexes[_set.values[i]];\n\t\t}\n\t\t_set.values.length = 0;\n\t}\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol\":\"LibSet_address\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol\":{\"keccak256\":\"0x72fb90b4a671df062f4db5569c96f4c28010e9da98f89865e204cc9ef60e4dba\",\"urls\":[\"bzz-raw://37c4c01940187a83334529b6ab07af558ef1c2e00eab9a6265b40fc9635a0e3c\",\"dweb:/ipfs/QmNXyZWTKFjq7buBjtWRPUV2aZ1ChrjVZvRac83Vt97NEw\"]}},\"version\":1}",
+  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a723158204dd5d8965166d7f2be28aa8ed4d82aaef58c72b902fae197938ea2906340d86b64736f6c634300050c0032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a723158204dd5d8965166d7f2be28aa8ed4d82aaef58c72b902fae197938ea2906340d86b64736f6c634300050c0032",
+  "sourceMap": "25:1505:2:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "25:1505:2:-;;;;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\nlibrary LibSet_address\n{\n\tstruct set\n\t{\n\t\taddress[] values;\n\t\tmapping(address => uint256) indexes;\n\t}\n\n\tfunction length(set storage _set)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _set.values.length;\n\t}\n\n\tfunction at(set storage _set, uint256 _index)\n\tinternal view returns (address )\n\t{\n\t\treturn _set.values[_index - 1];\n\t}\n\n\tfunction indexOf(set storage _set, address  _value)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _set.indexes[_value];\n\t}\n\n\tfunction contains(set storage _set, address  _value)\n\tinternal view returns (bool)\n\t{\n\t\treturn indexOf(_set, _value) != 0;\n\t}\n\n\tfunction content(set storage _set)\n\tinternal view returns (address[] memory)\n\t{\n\t\treturn _set.values;\n\t}\n\n\tfunction add(set storage _set, address  _value)\n\tinternal returns (bool)\n\t{\n\t\tif (contains(_set, _value))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t\t_set.indexes[_value] = _set.values.push(_value);\n\t\treturn true;\n\t}\n\n\tfunction remove(set storage _set, address  _value)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_set, _value))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\tuint256 i    = indexOf(_set, _value);\n\t\tuint256 last = length(_set);\n\n\t\tif (i != last)\n\t\t{\n\t\t\taddress  swapValue = _set.values[last - 1];\n\t\t\t_set.values[i - 1] = swapValue;\n\t\t\t_set.indexes[swapValue] = i;\n\t\t}\n\n\t\tdelete _set.indexes[_value];\n\t\t--_set.values.length;\n\n\t\treturn true;\n\t}\n\n\tfunction clear(set storage _set)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = 0; i < _set.values.length; ++i)\n\t\t{\n\t\t\tdelete _set.indexes[_set.values[i]];\n\t\t}\n\t\t_set.values.length = 0;\n\t}\n}\n",
   "sourcePath": "/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol",
   "ast": {
     "absolutePath": "/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol",
@@ -279,7 +279,7 @@
             "body": {
               "id": 639,
               "nodeType": "Block",
-              "src": "313:38:2",
+              "src": "314:38:2",
               "statements": [
                 {
                   "expression": {
@@ -293,7 +293,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 625,
-                        "src": "324:4:2",
+                        "src": "325:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -307,7 +307,7 @@
                       "memberName": "values",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 606,
-                      "src": "324:11:2",
+                      "src": "325:11:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
@@ -332,7 +332,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 627,
-                        "src": "336:6:2",
+                        "src": "337:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -350,7 +350,7 @@
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "345:1:2",
+                        "src": "346:1:2",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
@@ -358,7 +358,7 @@
                         },
                         "value": "1"
                       },
-                      "src": "336:10:2",
+                      "src": "337:10:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -369,7 +369,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "324:23:2",
+                    "src": "325:23:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -378,7 +378,7 @@
                   "functionReturnParameters": 631,
                   "id": 638,
                   "nodeType": "Return",
-                  "src": "317:30:2"
+                  "src": "318:30:2"
                 }
               ]
             },
@@ -482,10 +482,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "302:9:2"
+              "src": "302:10:2"
             },
             "scope": 833,
-            "src": "233:118:2",
+            "src": "233:119:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -494,7 +494,7 @@
             "body": {
               "id": 654,
               "nodeType": "Block",
-              "src": "439:35:2",
+              "src": "441:35:2",
               "statements": [
                 {
                   "expression": {
@@ -508,7 +508,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 642,
-                        "src": "450:4:2",
+                        "src": "452:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -522,7 +522,7 @@
                       "memberName": "indexes",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 610,
-                      "src": "450:12:2",
+                      "src": "452:12:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
@@ -536,7 +536,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 644,
-                      "src": "463:6:2",
+                      "src": "465:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -547,7 +547,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "450:20:2",
+                    "src": "452:20:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -556,7 +556,7 @@
                   "functionReturnParameters": 648,
                   "id": 653,
                   "nodeType": "Return",
-                  "src": "443:27:2"
+                  "src": "445:27:2"
                 }
               ]
             },
@@ -577,7 +577,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "371:16:2",
+                  "src": "372:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -590,7 +590,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "371:3:2",
+                    "src": "372:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -605,7 +605,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "389:14:2",
+                  "src": "390:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -616,7 +616,7 @@
                     "id": 643,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "389:7:2",
+                    "src": "390:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -627,7 +627,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "370:34:2"
+              "src": "371:35:2"
             },
             "returnParameters": {
               "id": 648,
@@ -639,7 +639,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "429:7:2",
+                  "src": "431:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -650,7 +650,7 @@
                     "id": 646,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "429:7:2",
+                    "src": "431:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -660,10 +660,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "428:9:2"
+              "src": "430:9:2"
             },
             "scope": 833,
-            "src": "354:120:2",
+            "src": "355:121:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -672,7 +672,7 @@
             "body": {
               "id": 671,
               "nodeType": "Block",
-              "src": "560:41:2",
+              "src": "563:41:2",
               "statements": [
                 {
                   "expression": {
@@ -696,7 +696,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 657,
-                          "src": "579:4:2",
+                          "src": "582:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -709,7 +709,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 659,
-                          "src": "585:6:2",
+                          "src": "588:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -732,7 +732,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 655,
-                        "src": "571:7:2",
+                        "src": "574:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_uint256_$",
                           "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (uint256)"
@@ -746,7 +746,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "571:21:2",
+                      "src": "574:21:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -764,7 +764,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "596:1:2",
+                      "src": "599:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -772,7 +772,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "571:26:2",
+                    "src": "574:26:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -781,7 +781,7 @@
                   "functionReturnParameters": 663,
                   "id": 670,
                   "nodeType": "Return",
-                  "src": "564:33:2"
+                  "src": "567:33:2"
                 }
               ]
             },
@@ -802,7 +802,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "495:16:2",
+                  "src": "497:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -815,7 +815,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "495:3:2",
+                    "src": "497:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -830,7 +830,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "513:14:2",
+                  "src": "515:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -841,7 +841,7 @@
                     "id": 658,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "513:7:2",
+                    "src": "515:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -852,7 +852,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "494:34:2"
+              "src": "496:35:2"
             },
             "returnParameters": {
               "id": 663,
@@ -864,7 +864,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "553:4:2",
+                  "src": "556:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -875,7 +875,7 @@
                     "id": 661,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "553:4:2",
+                    "src": "556:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -885,10 +885,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "552:6:2"
+              "src": "555:6:2"
             },
             "scope": 833,
-            "src": "477:124:2",
+            "src": "479:125:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -897,7 +897,7 @@
             "body": {
               "id": 683,
               "nodeType": "Block",
-              "src": "682:26:2",
+              "src": "685:26:2",
               "statements": [
                 {
                   "expression": {
@@ -909,7 +909,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 674,
-                      "src": "693:4:2",
+                      "src": "696:4:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                         "typeString": "struct LibSet_address.set storage pointer"
@@ -923,7 +923,7 @@
                     "memberName": "values",
                     "nodeType": "MemberAccess",
                     "referencedDeclaration": 606,
-                    "src": "693:11:2",
+                    "src": "696:11:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
@@ -932,7 +932,7 @@
                   "functionReturnParameters": 679,
                   "id": 682,
                   "nodeType": "Return",
-                  "src": "686:18:2"
+                  "src": "689:18:2"
                 }
               ]
             },
@@ -953,7 +953,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 684,
-                  "src": "621:16:2",
+                  "src": "624:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -966,7 +966,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "621:3:2",
+                    "src": "624:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -976,7 +976,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "620:18:2"
+              "src": "623:18:2"
             },
             "returnParameters": {
               "id": 679,
@@ -988,7 +988,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 684,
-                  "src": "663:16:2",
+                  "src": "666:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1000,7 +1000,7 @@
                       "id": 676,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "663:7:2",
+                      "src": "666:7:2",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1010,7 +1010,7 @@
                     "id": 677,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "663:9:2",
+                    "src": "666:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1020,10 +1020,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "662:18:2"
+              "src": "665:18:2"
             },
             "scope": 833,
-            "src": "604:104:2",
+            "src": "607:104:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -1032,7 +1032,7 @@
             "body": {
               "id": 715,
               "nodeType": "Block",
-              "src": "784:125:2",
+              "src": "788:125:2",
               "statements": [
                 {
                   "condition": {
@@ -1045,7 +1045,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 686,
-                        "src": "801:4:2",
+                        "src": "805:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -1058,7 +1058,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 688,
-                        "src": "807:6:2",
+                        "src": "811:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1081,7 +1081,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 672,
-                      "src": "792:8:2",
+                      "src": "796:8:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_bool_$",
                         "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (bool)"
@@ -1095,7 +1095,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "792:22:2",
+                    "src": "796:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1104,11 +1104,11 @@
                   "falseBody": null,
                   "id": 700,
                   "nodeType": "IfStatement",
-                  "src": "788:52:2",
+                  "src": "792:52:2",
                   "trueBody": {
                     "id": 699,
                     "nodeType": "Block",
-                    "src": "818:22:2",
+                    "src": "822:22:2",
                     "statements": [
                       {
                         "expression": {
@@ -1121,7 +1121,7 @@
                           "kind": "bool",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "830:5:2",
+                          "src": "834:5:2",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -1132,7 +1132,7 @@
                         "functionReturnParameters": 692,
                         "id": 698,
                         "nodeType": "Return",
-                        "src": "823:12:2"
+                        "src": "827:12:2"
                       }
                     ]
                   }
@@ -1156,7 +1156,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 686,
-                          "src": "843:4:2",
+                          "src": "847:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -1170,7 +1170,7 @@
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 610,
-                        "src": "843:12:2",
+                        "src": "847:12:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
@@ -1184,7 +1184,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 688,
-                        "src": "856:6:2",
+                        "src": "860:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1195,7 +1195,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "843:20:2",
+                      "src": "847:20:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1213,7 +1213,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 688,
-                          "src": "883:6:2",
+                          "src": "887:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1236,7 +1236,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 686,
-                            "src": "866:4:2",
+                            "src": "870:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                               "typeString": "struct LibSet_address.set storage pointer"
@@ -1250,7 +1250,7 @@
                           "memberName": "values",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 606,
-                          "src": "866:11:2",
+                          "src": "870:11:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
@@ -1264,7 +1264,7 @@
                         "memberName": "push",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "866:16:2",
+                        "src": "870:16:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
                           "typeString": "function (address) returns (uint256)"
@@ -1278,13 +1278,13 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "866:24:2",
+                      "src": "870:24:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "843:47:2",
+                    "src": "847:47:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1292,7 +1292,7 @@
                   },
                   "id": 712,
                   "nodeType": "ExpressionStatement",
-                  "src": "843:47:2"
+                  "src": "847:47:2"
                 },
                 {
                   "expression": {
@@ -1305,7 +1305,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "901:4:2",
+                    "src": "905:4:2",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1316,7 +1316,7 @@
                   "functionReturnParameters": 692,
                   "id": 714,
                   "nodeType": "Return",
-                  "src": "894:11:2"
+                  "src": "898:11:2"
                 }
               ]
             },
@@ -1337,7 +1337,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "724:16:2",
+                  "src": "727:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -1350,7 +1350,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "724:3:2",
+                    "src": "727:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -1365,7 +1365,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "742:14:2",
+                  "src": "745:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1376,7 +1376,7 @@
                     "id": 687,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "742:7:2",
+                    "src": "745:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1387,7 +1387,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "723:34:2"
+              "src": "726:35:2"
             },
             "returnParameters": {
               "id": 692,
@@ -1399,7 +1399,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "777:4:2",
+                  "src": "781:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1410,7 +1410,7 @@
                     "id": 690,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "777:4:2",
+                    "src": "781:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1420,10 +1420,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "776:6:2"
+              "src": "780:6:2"
             },
             "scope": 833,
-            "src": "711:198:2",
+            "src": "714:199:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
@@ -1432,7 +1432,7 @@
             "body": {
               "id": 792,
               "nodeType": "Block",
-              "src": "988:343:2",
+              "src": "993:344:2",
               "statements": [
                 {
                   "condition": {
@@ -1445,7 +1445,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "!",
                     "prefix": true,
-                    "src": "996:23:2",
+                    "src": "1001:23:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "arguments": [
@@ -1456,7 +1456,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1006:4:2",
+                          "src": "1011:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -1469,7 +1469,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 720,
-                          "src": "1012:6:2",
+                          "src": "1017:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1492,7 +1492,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 672,
-                        "src": "997:8:2",
+                        "src": "1002:8:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_bool_$",
                           "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (bool)"
@@ -1506,7 +1506,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "997:22:2",
+                      "src": "1002:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -1520,11 +1520,11 @@
                   "falseBody": null,
                   "id": 733,
                   "nodeType": "IfStatement",
-                  "src": "992:53:2",
+                  "src": "997:53:2",
                   "trueBody": {
                     "id": 732,
                     "nodeType": "Block",
-                    "src": "1023:22:2",
+                    "src": "1028:22:2",
                     "statements": [
                       {
                         "expression": {
@@ -1537,7 +1537,7 @@
                           "kind": "bool",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "1035:5:2",
+                          "src": "1040:5:2",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -1548,7 +1548,7 @@
                         "functionReturnParameters": 724,
                         "id": 731,
                         "nodeType": "Return",
-                        "src": "1028:12:2"
+                        "src": "1033:12:2"
                       }
                     ]
                   }
@@ -1564,7 +1564,7 @@
                       "name": "i",
                       "nodeType": "VariableDeclaration",
                       "scope": 792,
-                      "src": "1049:9:2",
+                      "src": "1054:9:2",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -1575,7 +1575,7 @@
                         "id": 734,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1049:7:2",
+                        "src": "1054:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1596,7 +1596,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 718,
-                        "src": "1072:4:2",
+                        "src": "1077:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -1609,7 +1609,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 720,
-                        "src": "1078:6:2",
+                        "src": "1083:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1632,7 +1632,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 655,
-                      "src": "1064:7:2",
+                      "src": "1069:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_uint256_$",
                         "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (uint256)"
@@ -1646,14 +1646,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1064:21:2",
+                    "src": "1069:21:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1049:36:2"
+                  "src": "1054:36:2"
                 },
                 {
                   "assignments": [
@@ -1666,7 +1666,7 @@
                       "name": "last",
                       "nodeType": "VariableDeclaration",
                       "scope": 792,
-                      "src": "1089:12:2",
+                      "src": "1094:12:2",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -1677,7 +1677,7 @@
                         "id": 741,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1089:7:2",
+                        "src": "1094:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1698,7 +1698,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 718,
-                        "src": "1111:4:2",
+                        "src": "1116:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -1717,7 +1717,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 623,
-                      "src": "1104:6:2",
+                      "src": "1109:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$returns$_t_uint256_$",
                         "typeString": "function (struct LibSet_address.set storage pointer) view returns (uint256)"
@@ -1731,14 +1731,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1104:12:2",
+                    "src": "1109:12:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1089:27:2"
+                  "src": "1094:27:2"
                 },
                 {
                   "condition": {
@@ -1759,7 +1759,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 735,
-                      "src": "1125:1:2",
+                      "src": "1130:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1774,13 +1774,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 742,
-                      "src": "1130:4:2",
+                      "src": "1135:4:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1125:9:2",
+                    "src": "1130:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1789,11 +1789,11 @@
                   "falseBody": null,
                   "id": 778,
                   "nodeType": "IfStatement",
-                  "src": "1121:135:2",
+                  "src": "1126:136:2",
                   "trueBody": {
                     "id": 777,
                     "nodeType": "Block",
-                    "src": "1138:118:2",
+                    "src": "1143:119:2",
                     "statements": [
                       {
                         "assignments": [
@@ -1806,7 +1806,7 @@
                             "name": "swapValue",
                             "nodeType": "VariableDeclaration",
                             "scope": 777,
-                            "src": "1143:17:2",
+                            "src": "1148:18:2",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -1817,7 +1817,7 @@
                               "id": 750,
                               "name": "address",
                               "nodeType": "ElementaryTypeName",
-                              "src": "1143:7:2",
+                              "src": "1148:7:2",
                               "stateMutability": "nonpayable",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -1840,7 +1840,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 718,
-                              "src": "1163:4:2",
+                              "src": "1169:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                 "typeString": "struct LibSet_address.set storage pointer"
@@ -1854,7 +1854,7 @@
                             "memberName": "values",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": 606,
-                            "src": "1163:11:2",
+                            "src": "1169:11:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_storage",
                               "typeString": "address[] storage ref"
@@ -1879,7 +1879,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 742,
-                              "src": "1175:4:2",
+                              "src": "1181:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -1897,7 +1897,7 @@
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "1182:1:2",
+                              "src": "1188:1:2",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_1_by_1",
@@ -1905,7 +1905,7 @@
                               },
                               "value": "1"
                             },
-                            "src": "1175:8:2",
+                            "src": "1181:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1916,14 +1916,14 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "1163:21:2",
+                          "src": "1169:21:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "1143:41:2"
+                        "src": "1148:42:2"
                       },
                       {
                         "expression": {
@@ -1944,7 +1944,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 718,
-                                "src": "1189:4:2",
+                                "src": "1195:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -1958,7 +1958,7 @@
                               "memberName": "values",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 606,
-                              "src": "1189:11:2",
+                              "src": "1195:11:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_address_$dyn_storage",
                                 "typeString": "address[] storage ref"
@@ -1983,7 +1983,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 735,
-                                "src": "1201:1:2",
+                                "src": "1207:1:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -2001,7 +2001,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "1205:1:2",
+                                "src": "1211:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_1_by_1",
@@ -2009,7 +2009,7 @@
                                 },
                                 "value": "1"
                               },
-                              "src": "1201:5:2",
+                              "src": "1207:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -2020,7 +2020,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1189:18:2",
+                            "src": "1195:18:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -2035,13 +2035,13 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 751,
-                            "src": "1210:9:2",
+                            "src": "1216:9:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
                             }
                           },
-                          "src": "1189:30:2",
+                          "src": "1195:30:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2049,7 +2049,7 @@
                         },
                         "id": 768,
                         "nodeType": "ExpressionStatement",
-                        "src": "1189:30:2"
+                        "src": "1195:30:2"
                       },
                       {
                         "expression": {
@@ -2070,7 +2070,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 718,
-                                "src": "1224:4:2",
+                                "src": "1230:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -2084,7 +2084,7 @@
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 610,
-                              "src": "1224:12:2",
+                              "src": "1230:12:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                                 "typeString": "mapping(address => uint256)"
@@ -2098,7 +2098,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 751,
-                              "src": "1237:9:2",
+                              "src": "1243:9:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -2109,7 +2109,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1224:23:2",
+                            "src": "1230:23:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2124,13 +2124,13 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 735,
-                            "src": "1250:1:2",
+                            "src": "1256:1:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "1224:27:2",
+                          "src": "1230:27:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2138,7 +2138,7 @@
                         },
                         "id": 776,
                         "nodeType": "ExpressionStatement",
-                        "src": "1224:27:2"
+                        "src": "1230:27:2"
                       }
                     ]
                   }
@@ -2154,7 +2154,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1260:27:2",
+                    "src": "1266:27:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
@@ -2166,7 +2166,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1267:4:2",
+                          "src": "1273:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -2180,7 +2180,7 @@
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 610,
-                        "src": "1267:12:2",
+                        "src": "1273:12:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
@@ -2194,7 +2194,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 720,
-                        "src": "1280:6:2",
+                        "src": "1286:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2205,7 +2205,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1267:20:2",
+                      "src": "1273:20:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2218,7 +2218,7 @@
                   },
                   "id": 784,
                   "nodeType": "ExpressionStatement",
-                  "src": "1260:27:2"
+                  "src": "1266:27:2"
                 },
                 {
                   "expression": {
@@ -2231,7 +2231,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "--",
                     "prefix": true,
-                    "src": "1291:20:2",
+                    "src": "1297:20:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "expression": {
@@ -2243,7 +2243,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1293:4:2",
+                          "src": "1299:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -2257,7 +2257,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1293:11:2",
+                        "src": "1299:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -2271,7 +2271,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1293:18:2",
+                      "src": "1299:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2284,7 +2284,7 @@
                   },
                   "id": 789,
                   "nodeType": "ExpressionStatement",
-                  "src": "1291:20:2"
+                  "src": "1297:20:2"
                 },
                 {
                   "expression": {
@@ -2297,7 +2297,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1323:4:2",
+                    "src": "1329:4:2",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2308,7 +2308,7 @@
                   "functionReturnParameters": 724,
                   "id": 791,
                   "nodeType": "Return",
-                  "src": "1316:11:2"
+                  "src": "1322:11:2"
                 }
               ]
             },
@@ -2329,7 +2329,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "928:16:2",
+                  "src": "932:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -2342,7 +2342,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "928:3:2",
+                    "src": "932:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -2357,7 +2357,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "946:14:2",
+                  "src": "950:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2368,7 +2368,7 @@
                     "id": 719,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "946:7:2",
+                    "src": "950:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2379,7 +2379,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "927:34:2"
+              "src": "931:35:2"
             },
             "returnParameters": {
               "id": 724,
@@ -2391,7 +2391,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "981:4:2",
+                  "src": "986:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2402,7 +2402,7 @@
                     "id": 722,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "981:4:2",
+                    "src": "986:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2412,10 +2412,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "980:6:2"
+              "src": "985:6:2"
             },
             "scope": 833,
-            "src": "912:419:2",
+            "src": "916:421:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
@@ -2424,13 +2424,13 @@
             "body": {
               "id": 831,
               "nodeType": "Block",
-              "src": "1393:129:2",
+              "src": "1399:129:2",
               "statements": [
                 {
                   "body": {
                     "id": 821,
                     "nodeType": "Block",
-                    "src": "1448:45:2",
+                    "src": "1454:45:2",
                     "statements": [
                       {
                         "expression": {
@@ -2443,7 +2443,7 @@
                           "nodeType": "UnaryOperation",
                           "operator": "delete",
                           "prefix": true,
-                          "src": "1453:35:2",
+                          "src": "1459:35:2",
                           "subExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
@@ -2455,7 +2455,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 795,
-                                "src": "1460:4:2",
+                                "src": "1466:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -2469,7 +2469,7 @@
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 610,
-                              "src": "1460:12:2",
+                              "src": "1466:12:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                                 "typeString": "mapping(address => uint256)"
@@ -2487,7 +2487,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 795,
-                                  "src": "1473:4:2",
+                                  "src": "1479:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                     "typeString": "struct LibSet_address.set storage pointer"
@@ -2501,7 +2501,7 @@
                                 "memberName": "values",
                                 "nodeType": "MemberAccess",
                                 "referencedDeclaration": 606,
-                                "src": "1473:11:2",
+                                "src": "1479:11:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_storage",
                                   "typeString": "address[] storage ref"
@@ -2515,7 +2515,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 801,
-                                "src": "1485:1:2",
+                                "src": "1491:1:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -2526,7 +2526,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "1473:14:2",
+                              "src": "1479:14:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -2537,7 +2537,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1460:28:2",
+                            "src": "1466:28:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2550,7 +2550,7 @@
                         },
                         "id": 820,
                         "nodeType": "ExpressionStatement",
-                        "src": "1453:35:2"
+                        "src": "1459:35:2"
                       }
                     ]
                   },
@@ -2572,7 +2572,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 801,
-                      "src": "1417:1:2",
+                      "src": "1423:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2591,7 +2591,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 795,
-                          "src": "1421:4:2",
+                          "src": "1427:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -2605,7 +2605,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1421:11:2",
+                        "src": "1427:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -2619,13 +2619,13 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1421:18:2",
+                      "src": "1427:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1417:22:2",
+                    "src": "1423:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2643,7 +2643,7 @@
                         "name": "i",
                         "nodeType": "VariableDeclaration",
                         "scope": 822,
-                        "src": "1402:9:2",
+                        "src": "1408:9:2",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -2654,7 +2654,7 @@
                           "id": 800,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1402:7:2",
+                          "src": "1408:7:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2675,7 +2675,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1414:1:2",
+                      "src": "1420:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -2684,7 +2684,7 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "1402:13:2"
+                    "src": "1408:13:2"
                   },
                   "loopExpression": {
                     "expression": {
@@ -2697,7 +2697,7 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": true,
-                      "src": "1441:3:2",
+                      "src": "1447:3:2",
                       "subExpression": {
                         "argumentTypes": null,
                         "id": 809,
@@ -2705,7 +2705,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 801,
-                        "src": "1443:1:2",
+                        "src": "1449:1:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2718,10 +2718,10 @@
                     },
                     "id": 811,
                     "nodeType": "ExpressionStatement",
-                    "src": "1441:3:2"
+                    "src": "1447:3:2"
                   },
                   "nodeType": "ForStatement",
-                  "src": "1397:96:2"
+                  "src": "1403:96:2"
                 },
                 {
                   "expression": {
@@ -2742,7 +2742,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 795,
-                          "src": "1496:4:2",
+                          "src": "1502:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -2756,7 +2756,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1496:11:2",
+                        "src": "1502:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -2770,7 +2770,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1496:18:2",
+                      "src": "1502:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2788,7 +2788,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1517:1:2",
+                      "src": "1523:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -2796,7 +2796,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "1496:22:2",
+                    "src": "1502:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2804,7 +2804,7 @@
                   },
                   "id": 830,
                   "nodeType": "ExpressionStatement",
-                  "src": "1496:22:2"
+                  "src": "1502:22:2"
                 }
               ]
             },
@@ -2825,7 +2825,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 832,
-                  "src": "1349:16:2",
+                  "src": "1355:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -2838,7 +2838,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "1349:3:2",
+                    "src": "1355:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -2848,7 +2848,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1348:18:2"
+              "src": "1354:18:2"
             },
             "returnParameters": {
               "id": 799,
@@ -2860,7 +2860,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 832,
-                  "src": "1386:4:2",
+                  "src": "1392:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2871,7 +2871,7 @@
                     "id": 797,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1386:4:2",
+                    "src": "1392:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2881,20 +2881,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1385:6:2"
+              "src": "1391:6:2"
             },
             "scope": 833,
-            "src": "1334:188:2",
+            "src": "1340:188:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
         "scope": 834,
-        "src": "25:1499:2"
+        "src": "25:1505:2"
       }
     ],
-    "src": "0:1525:2"
+    "src": "0:1531:2"
   },
   "legacyAST": {
     "absolutePath": "/home/amxx/Work/SolStruct/contracts/libs/LibSet.address.sol",
@@ -3167,7 +3167,7 @@
             "body": {
               "id": 639,
               "nodeType": "Block",
-              "src": "313:38:2",
+              "src": "314:38:2",
               "statements": [
                 {
                   "expression": {
@@ -3181,7 +3181,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 625,
-                        "src": "324:4:2",
+                        "src": "325:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -3195,7 +3195,7 @@
                       "memberName": "values",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 606,
-                      "src": "324:11:2",
+                      "src": "325:11:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
@@ -3220,7 +3220,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 627,
-                        "src": "336:6:2",
+                        "src": "337:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3238,7 +3238,7 @@
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "345:1:2",
+                        "src": "346:1:2",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
@@ -3246,7 +3246,7 @@
                         },
                         "value": "1"
                       },
-                      "src": "336:10:2",
+                      "src": "337:10:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -3257,7 +3257,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "324:23:2",
+                    "src": "325:23:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -3266,7 +3266,7 @@
                   "functionReturnParameters": 631,
                   "id": 638,
                   "nodeType": "Return",
-                  "src": "317:30:2"
+                  "src": "318:30:2"
                 }
               ]
             },
@@ -3370,10 +3370,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "302:9:2"
+              "src": "302:10:2"
             },
             "scope": 833,
-            "src": "233:118:2",
+            "src": "233:119:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -3382,7 +3382,7 @@
             "body": {
               "id": 654,
               "nodeType": "Block",
-              "src": "439:35:2",
+              "src": "441:35:2",
               "statements": [
                 {
                   "expression": {
@@ -3396,7 +3396,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 642,
-                        "src": "450:4:2",
+                        "src": "452:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -3410,7 +3410,7 @@
                       "memberName": "indexes",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 610,
-                      "src": "450:12:2",
+                      "src": "452:12:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
@@ -3424,7 +3424,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 644,
-                      "src": "463:6:2",
+                      "src": "465:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -3435,7 +3435,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "450:20:2",
+                    "src": "452:20:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3444,7 +3444,7 @@
                   "functionReturnParameters": 648,
                   "id": 653,
                   "nodeType": "Return",
-                  "src": "443:27:2"
+                  "src": "445:27:2"
                 }
               ]
             },
@@ -3465,7 +3465,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "371:16:2",
+                  "src": "372:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3478,7 +3478,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "371:3:2",
+                    "src": "372:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -3493,7 +3493,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "389:14:2",
+                  "src": "390:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3504,7 +3504,7 @@
                     "id": 643,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "389:7:2",
+                    "src": "390:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3515,7 +3515,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "370:34:2"
+              "src": "371:35:2"
             },
             "returnParameters": {
               "id": 648,
@@ -3527,7 +3527,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 655,
-                  "src": "429:7:2",
+                  "src": "431:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3538,7 +3538,7 @@
                     "id": 646,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "429:7:2",
+                    "src": "431:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3548,10 +3548,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "428:9:2"
+              "src": "430:9:2"
             },
             "scope": 833,
-            "src": "354:120:2",
+            "src": "355:121:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -3560,7 +3560,7 @@
             "body": {
               "id": 671,
               "nodeType": "Block",
-              "src": "560:41:2",
+              "src": "563:41:2",
               "statements": [
                 {
                   "expression": {
@@ -3584,7 +3584,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 657,
-                          "src": "579:4:2",
+                          "src": "582:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -3597,7 +3597,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 659,
-                          "src": "585:6:2",
+                          "src": "588:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -3620,7 +3620,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 655,
-                        "src": "571:7:2",
+                        "src": "574:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_uint256_$",
                           "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (uint256)"
@@ -3634,7 +3634,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "571:21:2",
+                      "src": "574:21:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -3652,7 +3652,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "596:1:2",
+                      "src": "599:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -3660,7 +3660,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "571:26:2",
+                    "src": "574:26:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -3669,7 +3669,7 @@
                   "functionReturnParameters": 663,
                   "id": 670,
                   "nodeType": "Return",
-                  "src": "564:33:2"
+                  "src": "567:33:2"
                 }
               ]
             },
@@ -3690,7 +3690,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "495:16:2",
+                  "src": "497:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3703,7 +3703,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "495:3:2",
+                    "src": "497:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -3718,7 +3718,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "513:14:2",
+                  "src": "515:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3729,7 +3729,7 @@
                     "id": 658,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "513:7:2",
+                    "src": "515:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3740,7 +3740,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "494:34:2"
+              "src": "496:35:2"
             },
             "returnParameters": {
               "id": 663,
@@ -3752,7 +3752,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 672,
-                  "src": "553:4:2",
+                  "src": "556:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3763,7 +3763,7 @@
                     "id": 661,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "553:4:2",
+                    "src": "556:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -3773,10 +3773,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "552:6:2"
+              "src": "555:6:2"
             },
             "scope": 833,
-            "src": "477:124:2",
+            "src": "479:125:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -3785,7 +3785,7 @@
             "body": {
               "id": 683,
               "nodeType": "Block",
-              "src": "682:26:2",
+              "src": "685:26:2",
               "statements": [
                 {
                   "expression": {
@@ -3797,7 +3797,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 674,
-                      "src": "693:4:2",
+                      "src": "696:4:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                         "typeString": "struct LibSet_address.set storage pointer"
@@ -3811,7 +3811,7 @@
                     "memberName": "values",
                     "nodeType": "MemberAccess",
                     "referencedDeclaration": 606,
-                    "src": "693:11:2",
+                    "src": "696:11:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
@@ -3820,7 +3820,7 @@
                   "functionReturnParameters": 679,
                   "id": 682,
                   "nodeType": "Return",
-                  "src": "686:18:2"
+                  "src": "689:18:2"
                 }
               ]
             },
@@ -3841,7 +3841,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 684,
-                  "src": "621:16:2",
+                  "src": "624:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3854,7 +3854,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "621:3:2",
+                    "src": "624:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -3864,7 +3864,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "620:18:2"
+              "src": "623:18:2"
             },
             "returnParameters": {
               "id": 679,
@@ -3876,7 +3876,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 684,
-                  "src": "663:16:2",
+                  "src": "666:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -3888,7 +3888,7 @@
                       "id": 676,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "663:7:2",
+                      "src": "666:7:2",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -3898,7 +3898,7 @@
                     "id": 677,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "663:9:2",
+                    "src": "666:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -3908,10 +3908,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "662:18:2"
+              "src": "665:18:2"
             },
             "scope": 833,
-            "src": "604:104:2",
+            "src": "607:104:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "internal"
@@ -3920,7 +3920,7 @@
             "body": {
               "id": 715,
               "nodeType": "Block",
-              "src": "784:125:2",
+              "src": "788:125:2",
               "statements": [
                 {
                   "condition": {
@@ -3933,7 +3933,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 686,
-                        "src": "801:4:2",
+                        "src": "805:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -3946,7 +3946,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 688,
-                        "src": "807:6:2",
+                        "src": "811:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3969,7 +3969,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 672,
-                      "src": "792:8:2",
+                      "src": "796:8:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_bool_$",
                         "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (bool)"
@@ -3983,7 +3983,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "792:22:2",
+                    "src": "796:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -3992,11 +3992,11 @@
                   "falseBody": null,
                   "id": 700,
                   "nodeType": "IfStatement",
-                  "src": "788:52:2",
+                  "src": "792:52:2",
                   "trueBody": {
                     "id": 699,
                     "nodeType": "Block",
-                    "src": "818:22:2",
+                    "src": "822:22:2",
                     "statements": [
                       {
                         "expression": {
@@ -4009,7 +4009,7 @@
                           "kind": "bool",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "830:5:2",
+                          "src": "834:5:2",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -4020,7 +4020,7 @@
                         "functionReturnParameters": 692,
                         "id": 698,
                         "nodeType": "Return",
-                        "src": "823:12:2"
+                        "src": "827:12:2"
                       }
                     ]
                   }
@@ -4044,7 +4044,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 686,
-                          "src": "843:4:2",
+                          "src": "847:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -4058,7 +4058,7 @@
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 610,
-                        "src": "843:12:2",
+                        "src": "847:12:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
@@ -4072,7 +4072,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 688,
-                        "src": "856:6:2",
+                        "src": "860:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -4083,7 +4083,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "843:20:2",
+                      "src": "847:20:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -4101,7 +4101,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 688,
-                          "src": "883:6:2",
+                          "src": "887:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -4124,7 +4124,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 686,
-                            "src": "866:4:2",
+                            "src": "870:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                               "typeString": "struct LibSet_address.set storage pointer"
@@ -4138,7 +4138,7 @@
                           "memberName": "values",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 606,
-                          "src": "866:11:2",
+                          "src": "870:11:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
@@ -4152,7 +4152,7 @@
                         "memberName": "push",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "866:16:2",
+                        "src": "870:16:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
                           "typeString": "function (address) returns (uint256)"
@@ -4166,13 +4166,13 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "866:24:2",
+                      "src": "870:24:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "843:47:2",
+                    "src": "847:47:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4180,7 +4180,7 @@
                   },
                   "id": 712,
                   "nodeType": "ExpressionStatement",
-                  "src": "843:47:2"
+                  "src": "847:47:2"
                 },
                 {
                   "expression": {
@@ -4193,7 +4193,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "901:4:2",
+                    "src": "905:4:2",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -4204,7 +4204,7 @@
                   "functionReturnParameters": 692,
                   "id": 714,
                   "nodeType": "Return",
-                  "src": "894:11:2"
+                  "src": "898:11:2"
                 }
               ]
             },
@@ -4225,7 +4225,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "724:16:2",
+                  "src": "727:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -4238,7 +4238,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "724:3:2",
+                    "src": "727:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -4253,7 +4253,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "742:14:2",
+                  "src": "745:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4264,7 +4264,7 @@
                     "id": 687,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "742:7:2",
+                    "src": "745:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -4275,7 +4275,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "723:34:2"
+              "src": "726:35:2"
             },
             "returnParameters": {
               "id": 692,
@@ -4287,7 +4287,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 716,
-                  "src": "777:4:2",
+                  "src": "781:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4298,7 +4298,7 @@
                     "id": 690,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "777:4:2",
+                    "src": "781:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -4308,10 +4308,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "776:6:2"
+              "src": "780:6:2"
             },
             "scope": 833,
-            "src": "711:198:2",
+            "src": "714:199:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
@@ -4320,7 +4320,7 @@
             "body": {
               "id": 792,
               "nodeType": "Block",
-              "src": "988:343:2",
+              "src": "993:344:2",
               "statements": [
                 {
                   "condition": {
@@ -4333,7 +4333,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "!",
                     "prefix": true,
-                    "src": "996:23:2",
+                    "src": "1001:23:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "arguments": [
@@ -4344,7 +4344,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1006:4:2",
+                          "src": "1011:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -4357,7 +4357,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 720,
-                          "src": "1012:6:2",
+                          "src": "1017:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -4380,7 +4380,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 672,
-                        "src": "997:8:2",
+                        "src": "1002:8:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_bool_$",
                           "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (bool)"
@@ -4394,7 +4394,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "997:22:2",
+                      "src": "1002:22:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -4408,11 +4408,11 @@
                   "falseBody": null,
                   "id": 733,
                   "nodeType": "IfStatement",
-                  "src": "992:53:2",
+                  "src": "997:53:2",
                   "trueBody": {
                     "id": 732,
                     "nodeType": "Block",
-                    "src": "1023:22:2",
+                    "src": "1028:22:2",
                     "statements": [
                       {
                         "expression": {
@@ -4425,7 +4425,7 @@
                           "kind": "bool",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "1035:5:2",
+                          "src": "1040:5:2",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -4436,7 +4436,7 @@
                         "functionReturnParameters": 724,
                         "id": 731,
                         "nodeType": "Return",
-                        "src": "1028:12:2"
+                        "src": "1033:12:2"
                       }
                     ]
                   }
@@ -4452,7 +4452,7 @@
                       "name": "i",
                       "nodeType": "VariableDeclaration",
                       "scope": 792,
-                      "src": "1049:9:2",
+                      "src": "1054:9:2",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -4463,7 +4463,7 @@
                         "id": 734,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1049:7:2",
+                        "src": "1054:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4484,7 +4484,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 718,
-                        "src": "1072:4:2",
+                        "src": "1077:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -4497,7 +4497,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 720,
-                        "src": "1078:6:2",
+                        "src": "1083:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -4520,7 +4520,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 655,
-                      "src": "1064:7:2",
+                      "src": "1069:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$_t_address_$returns$_t_uint256_$",
                         "typeString": "function (struct LibSet_address.set storage pointer,address) view returns (uint256)"
@@ -4534,14 +4534,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1064:21:2",
+                    "src": "1069:21:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1049:36:2"
+                  "src": "1054:36:2"
                 },
                 {
                   "assignments": [
@@ -4554,7 +4554,7 @@
                       "name": "last",
                       "nodeType": "VariableDeclaration",
                       "scope": 792,
-                      "src": "1089:12:2",
+                      "src": "1094:12:2",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -4565,7 +4565,7 @@
                         "id": 741,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1089:7:2",
+                        "src": "1094:7:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4586,7 +4586,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 718,
-                        "src": "1111:4:2",
+                        "src": "1116:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                           "typeString": "struct LibSet_address.set storage pointer"
@@ -4605,7 +4605,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 623,
-                      "src": "1104:6:2",
+                      "src": "1109:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$611_storage_ptr_$returns$_t_uint256_$",
                         "typeString": "function (struct LibSet_address.set storage pointer) view returns (uint256)"
@@ -4619,14 +4619,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1104:12:2",
+                    "src": "1109:12:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1089:27:2"
+                  "src": "1094:27:2"
                 },
                 {
                   "condition": {
@@ -4647,7 +4647,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 735,
-                      "src": "1125:1:2",
+                      "src": "1130:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -4662,13 +4662,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 742,
-                      "src": "1130:4:2",
+                      "src": "1135:4:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1125:9:2",
+                    "src": "1130:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -4677,11 +4677,11 @@
                   "falseBody": null,
                   "id": 778,
                   "nodeType": "IfStatement",
-                  "src": "1121:135:2",
+                  "src": "1126:136:2",
                   "trueBody": {
                     "id": 777,
                     "nodeType": "Block",
-                    "src": "1138:118:2",
+                    "src": "1143:119:2",
                     "statements": [
                       {
                         "assignments": [
@@ -4694,7 +4694,7 @@
                             "name": "swapValue",
                             "nodeType": "VariableDeclaration",
                             "scope": 777,
-                            "src": "1143:17:2",
+                            "src": "1148:18:2",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -4705,7 +4705,7 @@
                               "id": 750,
                               "name": "address",
                               "nodeType": "ElementaryTypeName",
-                              "src": "1143:7:2",
+                              "src": "1148:7:2",
                               "stateMutability": "nonpayable",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -4728,7 +4728,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 718,
-                              "src": "1163:4:2",
+                              "src": "1169:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                 "typeString": "struct LibSet_address.set storage pointer"
@@ -4742,7 +4742,7 @@
                             "memberName": "values",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": 606,
-                            "src": "1163:11:2",
+                            "src": "1169:11:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_storage",
                               "typeString": "address[] storage ref"
@@ -4767,7 +4767,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 742,
-                              "src": "1175:4:2",
+                              "src": "1181:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -4785,7 +4785,7 @@
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "1182:1:2",
+                              "src": "1188:1:2",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_1_by_1",
@@ -4793,7 +4793,7 @@
                               },
                               "value": "1"
                             },
-                            "src": "1175:8:2",
+                            "src": "1181:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -4804,14 +4804,14 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "1163:21:2",
+                          "src": "1169:21:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "1143:41:2"
+                        "src": "1148:42:2"
                       },
                       {
                         "expression": {
@@ -4832,7 +4832,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 718,
-                                "src": "1189:4:2",
+                                "src": "1195:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -4846,7 +4846,7 @@
                               "memberName": "values",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 606,
-                              "src": "1189:11:2",
+                              "src": "1195:11:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_address_$dyn_storage",
                                 "typeString": "address[] storage ref"
@@ -4871,7 +4871,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 735,
-                                "src": "1201:1:2",
+                                "src": "1207:1:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -4889,7 +4889,7 @@
                                 "kind": "number",
                                 "lValueRequested": false,
                                 "nodeType": "Literal",
-                                "src": "1205:1:2",
+                                "src": "1211:1:2",
                                 "subdenomination": null,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_rational_1_by_1",
@@ -4897,7 +4897,7 @@
                                 },
                                 "value": "1"
                               },
-                              "src": "1201:5:2",
+                              "src": "1207:5:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -4908,7 +4908,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1189:18:2",
+                            "src": "1195:18:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -4923,13 +4923,13 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 751,
-                            "src": "1210:9:2",
+                            "src": "1216:9:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
                             }
                           },
-                          "src": "1189:30:2",
+                          "src": "1195:30:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -4937,7 +4937,7 @@
                         },
                         "id": 768,
                         "nodeType": "ExpressionStatement",
-                        "src": "1189:30:2"
+                        "src": "1195:30:2"
                       },
                       {
                         "expression": {
@@ -4958,7 +4958,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 718,
-                                "src": "1224:4:2",
+                                "src": "1230:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -4972,7 +4972,7 @@
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 610,
-                              "src": "1224:12:2",
+                              "src": "1230:12:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                                 "typeString": "mapping(address => uint256)"
@@ -4986,7 +4986,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 751,
-                              "src": "1237:9:2",
+                              "src": "1243:9:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -4997,7 +4997,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1224:23:2",
+                            "src": "1230:23:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -5012,13 +5012,13 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 735,
-                            "src": "1250:1:2",
+                            "src": "1256:1:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "1224:27:2",
+                          "src": "1230:27:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -5026,7 +5026,7 @@
                         },
                         "id": 776,
                         "nodeType": "ExpressionStatement",
-                        "src": "1224:27:2"
+                        "src": "1230:27:2"
                       }
                     ]
                   }
@@ -5042,7 +5042,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1260:27:2",
+                    "src": "1266:27:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
@@ -5054,7 +5054,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1267:4:2",
+                          "src": "1273:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -5068,7 +5068,7 @@
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 610,
-                        "src": "1267:12:2",
+                        "src": "1273:12:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
@@ -5082,7 +5082,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 720,
-                        "src": "1280:6:2",
+                        "src": "1286:6:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -5093,7 +5093,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1267:20:2",
+                      "src": "1273:20:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5106,7 +5106,7 @@
                   },
                   "id": 784,
                   "nodeType": "ExpressionStatement",
-                  "src": "1260:27:2"
+                  "src": "1266:27:2"
                 },
                 {
                   "expression": {
@@ -5119,7 +5119,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "--",
                     "prefix": true,
-                    "src": "1291:20:2",
+                    "src": "1297:20:2",
                     "subExpression": {
                       "argumentTypes": null,
                       "expression": {
@@ -5131,7 +5131,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 718,
-                          "src": "1293:4:2",
+                          "src": "1299:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -5145,7 +5145,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1293:11:2",
+                        "src": "1299:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -5159,7 +5159,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1293:18:2",
+                      "src": "1299:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5172,7 +5172,7 @@
                   },
                   "id": 789,
                   "nodeType": "ExpressionStatement",
-                  "src": "1291:20:2"
+                  "src": "1297:20:2"
                 },
                 {
                   "expression": {
@@ -5185,7 +5185,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1323:4:2",
+                    "src": "1329:4:2",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -5196,7 +5196,7 @@
                   "functionReturnParameters": 724,
                   "id": 791,
                   "nodeType": "Return",
-                  "src": "1316:11:2"
+                  "src": "1322:11:2"
                 }
               ]
             },
@@ -5217,7 +5217,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "928:16:2",
+                  "src": "932:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -5230,7 +5230,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "928:3:2",
+                    "src": "932:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -5245,7 +5245,7 @@
                   "name": "_value",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "946:14:2",
+                  "src": "950:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5256,7 +5256,7 @@
                     "id": 719,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "946:7:2",
+                    "src": "950:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -5267,7 +5267,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "927:34:2"
+              "src": "931:35:2"
             },
             "returnParameters": {
               "id": 724,
@@ -5279,7 +5279,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 793,
-                  "src": "981:4:2",
+                  "src": "986:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5290,7 +5290,7 @@
                     "id": 722,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "981:4:2",
+                    "src": "986:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5300,10 +5300,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "980:6:2"
+              "src": "985:6:2"
             },
             "scope": 833,
-            "src": "912:419:2",
+            "src": "916:421:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
@@ -5312,13 +5312,13 @@
             "body": {
               "id": 831,
               "nodeType": "Block",
-              "src": "1393:129:2",
+              "src": "1399:129:2",
               "statements": [
                 {
                   "body": {
                     "id": 821,
                     "nodeType": "Block",
-                    "src": "1448:45:2",
+                    "src": "1454:45:2",
                     "statements": [
                       {
                         "expression": {
@@ -5331,7 +5331,7 @@
                           "nodeType": "UnaryOperation",
                           "operator": "delete",
                           "prefix": true,
-                          "src": "1453:35:2",
+                          "src": "1459:35:2",
                           "subExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
@@ -5343,7 +5343,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 795,
-                                "src": "1460:4:2",
+                                "src": "1466:4:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                   "typeString": "struct LibSet_address.set storage pointer"
@@ -5357,7 +5357,7 @@
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 610,
-                              "src": "1460:12:2",
+                              "src": "1466:12:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                                 "typeString": "mapping(address => uint256)"
@@ -5375,7 +5375,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 795,
-                                  "src": "1473:4:2",
+                                  "src": "1479:4:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                                     "typeString": "struct LibSet_address.set storage pointer"
@@ -5389,7 +5389,7 @@
                                 "memberName": "values",
                                 "nodeType": "MemberAccess",
                                 "referencedDeclaration": 606,
-                                "src": "1473:11:2",
+                                "src": "1479:11:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_storage",
                                   "typeString": "address[] storage ref"
@@ -5403,7 +5403,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 801,
-                                "src": "1485:1:2",
+                                "src": "1491:1:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -5414,7 +5414,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "1473:14:2",
+                              "src": "1479:14:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -5425,7 +5425,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1460:28:2",
+                            "src": "1466:28:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -5438,7 +5438,7 @@
                         },
                         "id": 820,
                         "nodeType": "ExpressionStatement",
-                        "src": "1453:35:2"
+                        "src": "1459:35:2"
                       }
                     ]
                   },
@@ -5460,7 +5460,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 801,
-                      "src": "1417:1:2",
+                      "src": "1423:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5479,7 +5479,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 795,
-                          "src": "1421:4:2",
+                          "src": "1427:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -5493,7 +5493,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1421:11:2",
+                        "src": "1427:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -5507,13 +5507,13 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1421:18:2",
+                      "src": "1427:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "1417:22:2",
+                    "src": "1423:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5531,7 +5531,7 @@
                         "name": "i",
                         "nodeType": "VariableDeclaration",
                         "scope": 822,
-                        "src": "1402:9:2",
+                        "src": "1408:9:2",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -5542,7 +5542,7 @@
                           "id": 800,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1402:7:2",
+                          "src": "1408:7:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -5563,7 +5563,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1414:1:2",
+                      "src": "1420:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -5572,7 +5572,7 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "1402:13:2"
+                    "src": "1408:13:2"
                   },
                   "loopExpression": {
                     "expression": {
@@ -5585,7 +5585,7 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": true,
-                      "src": "1441:3:2",
+                      "src": "1447:3:2",
                       "subExpression": {
                         "argumentTypes": null,
                         "id": 809,
@@ -5593,7 +5593,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 801,
-                        "src": "1443:1:2",
+                        "src": "1449:1:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -5606,10 +5606,10 @@
                     },
                     "id": 811,
                     "nodeType": "ExpressionStatement",
-                    "src": "1441:3:2"
+                    "src": "1447:3:2"
                   },
                   "nodeType": "ForStatement",
-                  "src": "1397:96:2"
+                  "src": "1403:96:2"
                 },
                 {
                   "expression": {
@@ -5630,7 +5630,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 795,
-                          "src": "1496:4:2",
+                          "src": "1502:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                             "typeString": "struct LibSet_address.set storage pointer"
@@ -5644,7 +5644,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 606,
-                        "src": "1496:11:2",
+                        "src": "1502:11:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
@@ -5658,7 +5658,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1496:18:2",
+                      "src": "1502:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5676,7 +5676,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1517:1:2",
+                      "src": "1523:1:2",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -5684,7 +5684,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "1496:22:2",
+                    "src": "1502:22:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -5692,7 +5692,7 @@
                   },
                   "id": 830,
                   "nodeType": "ExpressionStatement",
-                  "src": "1496:22:2"
+                  "src": "1502:22:2"
                 }
               ]
             },
@@ -5713,7 +5713,7 @@
                   "name": "_set",
                   "nodeType": "VariableDeclaration",
                   "scope": 832,
-                  "src": "1349:16:2",
+                  "src": "1355:16:2",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -5726,7 +5726,7 @@
                     "name": "set",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 611,
-                    "src": "1349:3:2",
+                    "src": "1355:3:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_set_$611_storage_ptr",
                       "typeString": "struct LibSet_address.set"
@@ -5736,7 +5736,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1348:18:2"
+              "src": "1354:18:2"
             },
             "returnParameters": {
               "id": 799,
@@ -5748,7 +5748,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 832,
-                  "src": "1386:4:2",
+                  "src": "1392:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5759,7 +5759,7 @@
                     "id": 797,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1386:4:2",
+                    "src": "1392:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5769,20 +5769,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1385:6:2"
+              "src": "1391:6:2"
             },
             "scope": 833,
-            "src": "1334:188:2",
+            "src": "1340:188:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
         "scope": 834,
-        "src": "25:1499:2"
+        "src": "25:1505:2"
       }
     ],
-    "src": "0:1525:2"
+    "src": "0:1531:2"
   },
   "compiler": {
     "name": "solc",
@@ -5790,7 +5790,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.17",
-  "updatedAt": "2019-11-02T16:56:05.036Z",
+  "updatedAt": "2019-11-02T17:02:54.690Z",
   "devdoc": {
     "methods": {}
   },

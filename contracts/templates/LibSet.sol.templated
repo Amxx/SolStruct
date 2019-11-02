@@ -15,18 +15,18 @@ library LibSet_<VALUE>
 	}
 
 	function at(set storage _set, uint256 _index)
-	internal view returns (<VALUE>)
+	internal view returns (<VALUE> <VALUE_LOCATION>)
 	{
 		return _set.values[_index - 1];
 	}
 
-	function indexOf(set storage _set, <VALUE> _value)
+	function indexOf(set storage _set, <VALUE> <VALUE_LOCATION> _value)
 	internal view returns (uint256)
 	{
 		return _set.indexes[_value];
 	}
 
-	function contains(set storage _set, <VALUE> _value)
+	function contains(set storage _set, <VALUE> <VALUE_LOCATION> _value)
 	internal view returns (bool)
 	{
 		return indexOf(_set, _value) != 0;
@@ -38,7 +38,7 @@ library LibSet_<VALUE>
 		return _set.values;
 	}
 
-	function add(set storage _set, <VALUE> _value)
+	function add(set storage _set, <VALUE> <VALUE_LOCATION> _value)
 	internal returns (bool)
 	{
 		if (contains(_set, _value))
@@ -49,7 +49,7 @@ library LibSet_<VALUE>
 		return true;
 	}
 
-	function remove(set storage _set, <VALUE> _value)
+	function remove(set storage _set, <VALUE> <VALUE_LOCATION> _value)
 	internal returns (bool)
 	{
 		if (!contains(_set, _value))
@@ -62,7 +62,7 @@ library LibSet_<VALUE>
 
 		if (i != last)
 		{
-			<VALUE> swapValue = _set.values[last - 1];
+			<VALUE> <VALUE_LOCATION> swapValue = _set.values[last - 1];
 			_set.values[i - 1] = swapValue;
 			_set.indexes[swapValue] = i;
 		}

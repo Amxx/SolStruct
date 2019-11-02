@@ -15,32 +15,32 @@ library LibMap_<KEY>_<VALUE>
 		return _map.keys.length;
 	}
 
-	function value(map storage _map, <KEY> _key)
+	function value(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (<VALUE> <VALUE_LOCATION>)
 	{
 		return _map.values[_key];
 	}
 
 	function at(map storage _map, uint256 _index)
-	internal view returns (<KEY>)
+	internal view returns (<KEY> <KEY_LOCATION>)
 	{
 		return _map.keys[_index - 1];
 	}
 
 	function entryAt(map storage _map, uint256 _index)
-	internal view returns (<KEY>, <VALUE> <VALUE_LOCATION>)
+	internal view returns (<KEY> <KEY_LOCATION>, <VALUE> <VALUE_LOCATION>)
 	{
-		<KEY> key = at(_map, _index);
+		<KEY> <KEY_LOCATION> key = at(_map, _index);
 		return (key, value(_map, key));
 	}
 
-	function indexOf(map storage _map, <KEY> _key)
+	function indexOf(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (uint256)
 	{
 		return _map.indexes[_key];
 	}
 
-	function contains(map storage _map, <KEY> _key)
+	function contains(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (bool)
 	{
 		return indexOf(_map, _key) != 0;
@@ -52,7 +52,7 @@ library LibMap_<KEY>_<VALUE>
 		return _map.keys;
 	}
 
-	function set(map storage _map, <KEY> _key, <VALUE> <VALUE_LOCATION> _value)
+	function set(map storage _map, <KEY> <KEY_LOCATION> _key, <VALUE> <VALUE_LOCATION> _value)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
@@ -63,7 +63,7 @@ library LibMap_<KEY>_<VALUE>
 		return true;
 	}
 
-	function remove(map storage _map, <KEY> _key)
+	function remove(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
@@ -76,7 +76,7 @@ library LibMap_<KEY>_<VALUE>
 
 		if (i != last)
 		{
-			<KEY> swapValue = _map.keys[last - 1];
+			<KEY> <KEY_LOCATION> swapValue = _map.keys[last - 1];
 			_map.keys[i - 1] = swapValue;
 			_map.indexes[swapValue] = i;
 		}
