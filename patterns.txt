@@ -1,1 +1,1 @@
-LibSet.address.sol LibMap.bytes4.address.sol
+LibSet.address.sol LibSet.bytes32.sol LibSet.uint256.sol LibMap.bytes4.address.sol
