@@ -15,7 +15,8 @@
   "scripts": {
     "generate": "python scripts/generator.py",
     "compile": "truffle compile",
-    "build": "yarn generate && yarn compile"
+    "build": "yarn generate && yarn compile",
+		"clear": "rm -fv contracts/libs/* build/contracts/*"
   },
   "dependencies": {
     "truffle": "^5.0.43"

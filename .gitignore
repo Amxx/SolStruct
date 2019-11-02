@@ -1,5 +1,7 @@
 contracts/libs
 node_modules
 
+__pycache__
+
 yarn.lock
 yarn-error.log
