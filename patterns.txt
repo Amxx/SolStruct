@@ -1,1 +1,5 @@
-LibSet.address.sol LibSet.bytes32.sol LibSet.uint256.sol LibMap.bytes4.address.sol
+LibSet<address>
+LibSet<bytes32>
+LibSet<uint256>
+LibMap<bytes4,address>
+LibMap<bytes32,bytes>

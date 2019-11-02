@@ -1,11 +1,11 @@
 pragma solidity ^0.5.0;
 
-library LibSet_TYPE_VALUE
+library LibSet_<VALUE>
 {
 	struct set
 	{
-		TYPE_VALUE[] values;
-		mapping(TYPE_VALUE => uint256) indexes;
+		<VALUE>[] values;
+		mapping(<VALUE> => uint256) indexes;
 	}
 
 	function length(set storage _set)
@@ -15,30 +15,30 @@ library LibSet_TYPE_VALUE
 	}
 
 	function at(set storage _set, uint256 _index)
-	internal view returns (TYPE_VALUE)
+	internal view returns (<VALUE>)
 	{
 		return _set.values[_index - 1];
 	}
 
-	function indexOf(set storage _set, TYPE_VALUE _value)
+	function indexOf(set storage _set, <VALUE> _value)
 	internal view returns (uint256)
 	{
 		return _set.indexes[_value];
 	}
 
-	function contains(set storage _set, TYPE_VALUE _value)
+	function contains(set storage _set, <VALUE> _value)
 	internal view returns (bool)
 	{
 		return indexOf(_set, _value) != 0;
 	}
 
 	function content(set storage _set)
-	internal view returns (TYPE_VALUE[] memory)
+	internal view returns (<VALUE>[] memory)
 	{
 		return _set.values;
 	}
 
-	function add(set storage _set, TYPE_VALUE _value)
+	function add(set storage _set, <VALUE> _value)
 	internal returns (bool)
 	{
 		if (contains(_set, _value))
@@ -49,7 +49,7 @@ library LibSet_TYPE_VALUE
 		return true;
 	}
 
-	function remove(set storage _set, TYPE_VALUE _value)
+	function remove(set storage _set, <VALUE> _value)
 	internal returns (bool)
 	{
 		if (!contains(_set, _value))
@@ -62,7 +62,7 @@ library LibSet_TYPE_VALUE
 
 		if (i != last)
 		{
-			TYPE_VALUE swapValue = _set.values[last - 1];
+			<VALUE> swapValue = _set.values[last - 1];
 			_set.values[i - 1] = swapValue;
 			_set.indexes[swapValue] = i;
 		}

@@ -13,7 +13,7 @@
     "url": "https://github.com/Amxx/SolStruct/issues"
   },
   "scripts": {
-    "generate": "make",
+    "generate": "python scripts/generator.py",
     "compile": "truffle compile",
     "build": "yarn generate && yarn compile"
   },

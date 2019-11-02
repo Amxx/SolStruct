@@ -1,12 +1,12 @@
 pragma solidity ^0.5.0;
 
-library LibMap_TYPE_KEY_TYPE_VALUE
+library LibMap_<KEY>_<VALUE>
 {
 	struct map
 	{
-		TYPE_KEY[] keys;
-		mapping(TYPE_KEY => TYPE_VALUE) values;
-		mapping(TYPE_KEY => uint256) indexes;
+		<KEY>[] keys;
+		mapping(<KEY> => <VALUE>) values;
+		mapping(<KEY> => uint256) indexes;
 	}
 
 	function length(map storage _map)
@@ -15,44 +15,44 @@ library LibMap_TYPE_KEY_TYPE_VALUE
 		return _map.keys.length;
 	}
 
-	function value(map storage _map, TYPE_KEY _key)
-	internal view returns (TYPE_VALUE)
+	function value(map storage _map, <KEY> _key)
+	internal view returns (<VALUE> <VALUE_LOCATION>)
 	{
 		return _map.values[_key];
 	}
 
 	function at(map storage _map, uint256 _index)
-	internal view returns (TYPE_KEY)
+	internal view returns (<KEY>)
 	{
 		return _map.keys[_index - 1];
 	}
 
 	function entryAt(map storage _map, uint256 _index)
-	internal view returns (TYPE_KEY, TYPE_VALUE)
+	internal view returns (<KEY>, <VALUE> <VALUE_LOCATION>)
 	{
-		TYPE_KEY key = at(_map, _index);
+		<KEY> key = at(_map, _index);
 		return (key, value(_map, key));
 	}
 
-	function indexOf(map storage _map, TYPE_KEY _key)
+	function indexOf(map storage _map, <KEY> _key)
 	internal view returns (uint256)
 	{
 		return _map.indexes[_key];
 	}
 
-	function contains(map storage _map, TYPE_KEY _key)
+	function contains(map storage _map, <KEY> _key)
 	internal view returns (bool)
 	{
 		return indexOf(_map, _key) != 0;
 	}
 
 	function keys(map storage _map)
-	internal view returns (TYPE_KEY[] memory)
+	internal view returns (<KEY>[] memory)
 	{
 		return _map.keys;
 	}
 
-	function set(map storage _map, TYPE_KEY _key, TYPE_VALUE _value)
+	function set(map storage _map, <KEY> _key, <VALUE> <VALUE_LOCATION> _value)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
@@ -63,7 +63,7 @@ library LibMap_TYPE_KEY_TYPE_VALUE
 		return true;
 	}
 
-	function remove(map storage _map, TYPE_KEY _key)
+	function remove(map storage _map, <KEY> _key)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
@@ -76,7 +76,7 @@ library LibMap_TYPE_KEY_TYPE_VALUE
 
 		if (i != last)
 		{
-			TYPE_KEY swapValue = _map.keys[last - 1];
+			<KEY> swapValue = _map.keys[last - 1];
 			_map.keys[i - 1] = swapValue;
 			_map.indexes[swapValue] = i;
 		}
