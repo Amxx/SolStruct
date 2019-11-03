@@ -12,13 +12,21 @@
   "bugs": {
     "url": "https://github.com/Amxx/SolStruct/issues"
   },
+  "files": [
+    "/contracts",
+    "/build",
+    "/scripts",
+    "/patterns.txt"
+  ],
   "scripts": {
     "generate": "python scripts/generator.py",
     "compile": "truffle compile",
     "build": "yarn generate && yarn compile",
-		"clear": "rm -fv contracts/libs/* build/contracts/*"
+    "clear": "rm -fv contracts/libs/* build/contracts/*"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "openzeppelin-test-helpers": "^0.5.1",
     "truffle": "^5.0.43"
   }
 }
