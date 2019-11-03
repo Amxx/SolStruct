@@ -5,8 +5,8 @@ library LibMap_bytes32_bytes
 	struct map
 	{
 		bytes32[] keys;
-		mapping(bytes32 => bytes) values;
 		mapping(bytes32 => uint256) indexes;
+		mapping(bytes32 => bytes) values;
 	}
 
 	function length(map storage _map)

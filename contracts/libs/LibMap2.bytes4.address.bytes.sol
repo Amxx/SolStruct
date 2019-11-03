@@ -1,12 +1,13 @@
 pragma solidity ^0.5.0;
 
-library LibMap_bytes4_address
+library LibMap2_bytes4_address_bytes
 {
 	struct map
 	{
 		bytes4[] keys;
 		mapping(bytes4 => uint256) indexes;
-		mapping(bytes4 => address) values;
+		mapping(bytes4 => address) values1;
+		mapping(bytes4 => bytes) values2;
 	}
 
 	function length(map storage _map)
@@ -16,9 +17,21 @@ library LibMap_bytes4_address
 	}
 
 	function value(map storage _map, bytes4  _key)
+	internal view returns (address , bytes memory)
+	{
+		return (value1(_map, _key), value2(_map, _key));
+	}
+
+	function value1(map storage _map, bytes4  _key)
 	internal view returns (address )
 	{
-		return _map.values[_key];
+		return _map.values1[_key];
+	}
+
+	function value2(map storage _map, bytes4  _key)
+	internal view returns (bytes memory)
+	{
+		return _map.values2[_key];
 	}
 
 	function at(map storage _map, uint256 _index)
@@ -28,10 +41,10 @@ library LibMap_bytes4_address
 	}
 
 	function entryAt(map storage _map, uint256 _index)
-	internal view returns (bytes4 , address )
+	internal view returns (bytes4 , address , bytes memory)
 	{
 		bytes4  key = at(_map, _index);
-		return (key, value(_map, key));
+		return (key, value1(_map, key), value2(_map, key));
 	}
 
 	function indexOf(map storage _map, bytes4  _key)
@@ -52,14 +65,19 @@ library LibMap_bytes4_address
 		return _map.keys;
 	}
 
-	function set(map storage _map, bytes4  _key, address  _value)
+	function set(
+		map storage _map,
+		bytes4  _key,
+		address  _value1,
+		bytes memory _value2)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
 		{
 			_map.indexes[_key] = _map.keys.push(_key);
 		}
-		_map.values[_key] = _value;
+		_map.values1[_key] = _value1;
+		_map.values2[_key] = _value2;
 		return true;
 	}
 
@@ -82,7 +100,8 @@ library LibMap_bytes4_address
 		}
 
 		delete _map.indexes[_key];
-		delete _map.values[_key];
+		delete _map.values1[_key];
+		delete _map.values2[_key];
 		--_map.keys.length;
 
 		return true;
@@ -94,7 +113,8 @@ library LibMap_bytes4_address
 		for (uint256 i = 0; i < _map.keys.length; ++i)
 		{
 			delete _map.indexes[_map.keys[i]];
-			delete _map.values[_map.keys[i]];
+			delete _map.values1[_map.keys[i]];
+			delete _map.values2[_map.keys[i]];
 		}
 		_map.keys.length = 0;
 	}

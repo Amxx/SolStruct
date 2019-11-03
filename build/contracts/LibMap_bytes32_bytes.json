@@ -1,12 +1,12 @@
 {
   "contractName": "LibMap_bytes32_bytes",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":\"LibMap_bytes32_bytes\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":{\"keccak256\":\"0xf0f4d41c1780787b0ca8b4315703165910963dc702553c7ef4cc0b8d8c5c45bb\",\"urls\":[\"bzz-raw://39f7bd62f1f9458b741029f08e3eb5afa9794bb058af24c5832a4d89ec0620a3\",\"dweb:/ipfs/QmPrzcZUcjbRQfQaiytXzsZJyhg46qb2S8KVddXuksBPRc\"]}},\"version\":1}",
-  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820a36c79a33b829ab6a4a08f7c3a76a03fef6a71ad468172d5dab4f813959a933364736f6c634300050c0032",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820a36c79a33b829ab6a4a08f7c3a76a03fef6a71ad468172d5dab4f813959a933364736f6c634300050c0032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":\"LibMap_bytes32_bytes\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":{\"keccak256\":\"0xb400a34ffc99eea96ff69d408b5719e25ce097657b4df42af0add4e1f2d05918\",\"urls\":[\"bzz-raw://7752b779f6467966c27aa285407ec98e1e7b091a0888491ea5d6be86ac84d8be\",\"dweb:/ipfs/Qmap3gfGUuG7FNEoFucu8aYaiHLsi2a7PrjqzJtT7qLxRa\"]}},\"version\":1}",
+  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820790e9bfecd1644ab6065413f18c35fae297d4c4a2d9008b386648acb2cfc87bf64736f6c634300050c0032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820790e9bfecd1644ab6065413f18c35fae297d4c4a2d9008b386648acb2cfc87bf64736f6c634300050c0032",
   "sourceMap": "25:1897:0:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
   "deployedSourceMap": "25:1897:0:-;;;;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\nlibrary LibMap_bytes32_bytes\n{\n\tstruct map\n\t{\n\t\tbytes32[] keys;\n\t\tmapping(bytes32 => bytes) values;\n\t\tmapping(bytes32 => uint256) indexes;\n\t}\n\n\tfunction length(map storage _map)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keys.length;\n\t}\n\n\tfunction value(map storage _map, bytes32  _key)\n\tinternal view returns (bytes memory)\n\t{\n\t\treturn _map.values[_key];\n\t}\n\n\tfunction at(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 )\n\t{\n\t\treturn _map.keys[_index - 1];\n\t}\n\n\tfunction entryAt(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 , bytes memory)\n\t{\n\t\tbytes32  key = at(_map, _index);\n\t\treturn (key, value(_map, key));\n\t}\n\n\tfunction indexOf(map storage _map, bytes32  _key)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.indexes[_key];\n\t}\n\n\tfunction contains(map storage _map, bytes32  _key)\n\tinternal view returns (bool)\n\t{\n\t\treturn indexOf(_map, _key) != 0;\n\t}\n\n\tfunction keys(map storage _map)\n\tinternal view returns (bytes32[] memory)\n\t{\n\t\treturn _map.keys;\n\t}\n\n\tfunction set(map storage _map, bytes32  _key, bytes memory _value)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_map, _key))\n\t\t{\n\t\t\t_map.indexes[_key] = _map.keys.push(_key);\n\t\t}\n\t\t_map.values[_key] = _value;\n\t\treturn true;\n\t}\n\n\tfunction remove(map storage _map, bytes32  _key)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_map, _key))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\tuint256 i    = indexOf(_map, _key);\n\t\tuint256 last = length(_map);\n\n\t\tif (i != last)\n\t\t{\n\t\t\tbytes32  swapValue = _map.keys[last - 1];\n\t\t\t_map.keys[i - 1] = swapValue;\n\t\t\t_map.indexes[swapValue] = i;\n\t\t}\n\n\t\tdelete _map.indexes[_key];\n\t\tdelete _map.values[_key];\n\t\t--_map.keys.length;\n\n\t\treturn true;\n\t}\n\n\tfunction clear(map storage _map)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = 0; i < _map.keys.length; ++i)\n\t\t{\n\t\t\tdelete _map.indexes[_map.keys[i]];\n\t\t\tdelete _map.values[_map.keys[i]];\n\t\t}\n\t\t_map.keys.length = 0;\n\t}\n}\n",
+  "source": "pragma solidity ^0.5.0;\n\nlibrary LibMap_bytes32_bytes\n{\n\tstruct map\n\t{\n\t\tbytes32[] keys;\n\t\tmapping(bytes32 => uint256) indexes;\n\t\tmapping(bytes32 => bytes) values;\n\t}\n\n\tfunction length(map storage _map)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keys.length;\n\t}\n\n\tfunction value(map storage _map, bytes32  _key)\n\tinternal view returns (bytes memory)\n\t{\n\t\treturn _map.values[_key];\n\t}\n\n\tfunction at(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 )\n\t{\n\t\treturn _map.keys[_index - 1];\n\t}\n\n\tfunction entryAt(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 , bytes memory)\n\t{\n\t\tbytes32  key = at(_map, _index);\n\t\treturn (key, value(_map, key));\n\t}\n\n\tfunction indexOf(map storage _map, bytes32  _key)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.indexes[_key];\n\t}\n\n\tfunction contains(map storage _map, bytes32  _key)\n\tinternal view returns (bool)\n\t{\n\t\treturn indexOf(_map, _key) != 0;\n\t}\n\n\tfunction keys(map storage _map)\n\tinternal view returns (bytes32[] memory)\n\t{\n\t\treturn _map.keys;\n\t}\n\n\tfunction set(map storage _map, bytes32  _key, bytes memory _value)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_map, _key))\n\t\t{\n\t\t\t_map.indexes[_key] = _map.keys.push(_key);\n\t\t}\n\t\t_map.values[_key] = _value;\n\t\treturn true;\n\t}\n\n\tfunction remove(map storage _map, bytes32  _key)\n\tinternal returns (bool)\n\t{\n\t\tif (!contains(_map, _key))\n\t\t{\n\t\t\treturn false;\n\t\t}\n\n\t\tuint256 i    = indexOf(_map, _key);\n\t\tuint256 last = length(_map);\n\n\t\tif (i != last)\n\t\t{\n\t\t\tbytes32  swapValue = _map.keys[last - 1];\n\t\t\t_map.keys[i - 1] = swapValue;\n\t\t\t_map.indexes[swapValue] = i;\n\t\t}\n\n\t\tdelete _map.indexes[_key];\n\t\tdelete _map.values[_key];\n\t\t--_map.keys.length;\n\n\t\treturn true;\n\t}\n\n\tfunction clear(map storage _map)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = 0; i < _map.keys.length; ++i)\n\t\t{\n\t\t\tdelete _map.indexes[_map.keys[i]];\n\t\t\tdelete _map.values[_map.keys[i]];\n\t\t}\n\t\t_map.keys.length = 0;\n\t}\n}\n",
   "sourcePath": "/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol",
   "ast": {
     "absolutePath": "/home/amxx/Work/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol",
@@ -85,15 +85,15 @@
               {
                 "constant": false,
                 "id": 8,
-                "name": "values",
+                "name": "indexes",
                 "nodeType": "VariableDeclaration",
                 "scope": 13,
-                "src": "91:32:0",
+                "src": "91:35:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
-                  "typeString": "mapping(bytes32 => bytes)"
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                  "typeString": "mapping(bytes32 => uint256)"
                 },
                 "typeName": {
                   "id": 7,
@@ -108,19 +108,19 @@
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "91:25:0",
+                  "src": "91:27:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
-                    "typeString": "mapping(bytes32 => bytes)"
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                    "typeString": "mapping(bytes32 => uint256)"
                   },
                   "valueType": {
                     "id": 6,
-                    "name": "bytes",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "110:5:0",
+                    "src": "110:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   }
                 },
@@ -130,15 +130,15 @@
               {
                 "constant": false,
                 "id": 12,
-                "name": "indexes",
+                "name": "values",
                 "nodeType": "VariableDeclaration",
                 "scope": 13,
-                "src": "127:35:0",
+                "src": "130:32:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
-                  "typeString": "mapping(bytes32 => uint256)"
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
+                  "typeString": "mapping(bytes32 => bytes)"
                 },
                 "typeName": {
                   "id": 11,
@@ -146,26 +146,26 @@
                     "id": 9,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "135:7:0",
+                    "src": "138:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "127:27:0",
+                  "src": "130:25:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
-                    "typeString": "mapping(bytes32 => uint256)"
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
+                    "typeString": "mapping(bytes32 => bytes)"
                   },
                   "valueType": {
                     "id": 10,
-                    "name": "uint256",
+                    "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "146:7:0",
+                    "src": "149:5:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
                     }
                   }
                 },
@@ -350,7 +350,7 @@
                       "lValueRequested": false,
                       "memberName": "values",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8,
+                      "referencedDeclaration": 12,
                       "src": "369:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -1086,7 +1086,7 @@
                       "lValueRequested": false,
                       "memberName": "indexes",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 12,
+                      "referencedDeclaration": 8,
                       "src": "784:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -1720,7 +1720,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1166:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -1880,7 +1880,7 @@
                         "lValueRequested": false,
                         "memberName": "values",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 8,
+                        "referencedDeclaration": 12,
                         "src": "1215:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -2750,7 +2750,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1567:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -2846,7 +2846,7 @@
                         "lValueRequested": false,
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12,
+                        "referencedDeclaration": 8,
                         "src": "1610:12:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -2923,7 +2923,7 @@
                         "lValueRequested": false,
                         "memberName": "values",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 8,
+                        "referencedDeclaration": 12,
                         "src": "1639:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -3211,7 +3211,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1825:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -3331,7 +3331,7 @@
                               "lValueRequested": false,
                               "memberName": "values",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 8,
+                              "referencedDeclaration": 12,
                               "src": "1863:11:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -3836,15 +3836,15 @@
               {
                 "constant": false,
                 "id": 8,
-                "name": "values",
+                "name": "indexes",
                 "nodeType": "VariableDeclaration",
                 "scope": 13,
-                "src": "91:32:0",
+                "src": "91:35:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
-                  "typeString": "mapping(bytes32 => bytes)"
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                  "typeString": "mapping(bytes32 => uint256)"
                 },
                 "typeName": {
                   "id": 7,
@@ -3859,19 +3859,19 @@
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "91:25:0",
+                  "src": "91:27:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
-                    "typeString": "mapping(bytes32 => bytes)"
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                    "typeString": "mapping(bytes32 => uint256)"
                   },
                   "valueType": {
                     "id": 6,
-                    "name": "bytes",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "110:5:0",
+                    "src": "110:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   }
                 },
@@ -3881,15 +3881,15 @@
               {
                 "constant": false,
                 "id": 12,
-                "name": "indexes",
+                "name": "values",
                 "nodeType": "VariableDeclaration",
                 "scope": 13,
-                "src": "127:35:0",
+                "src": "130:32:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
-                  "typeString": "mapping(bytes32 => uint256)"
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
+                  "typeString": "mapping(bytes32 => bytes)"
                 },
                 "typeName": {
                   "id": 11,
@@ -3897,26 +3897,26 @@
                     "id": 9,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "135:7:0",
+                    "src": "138:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "127:27:0",
+                  "src": "130:25:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
-                    "typeString": "mapping(bytes32 => uint256)"
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
+                    "typeString": "mapping(bytes32 => bytes)"
                   },
                   "valueType": {
                     "id": 10,
-                    "name": "uint256",
+                    "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "146:7:0",
+                    "src": "149:5:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
                     }
                   }
                 },
@@ -4101,7 +4101,7 @@
                       "lValueRequested": false,
                       "memberName": "values",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8,
+                      "referencedDeclaration": 12,
                       "src": "369:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -4837,7 +4837,7 @@
                       "lValueRequested": false,
                       "memberName": "indexes",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 12,
+                      "referencedDeclaration": 8,
                       "src": "784:12:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -5471,7 +5471,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1166:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -5631,7 +5631,7 @@
                         "lValueRequested": false,
                         "memberName": "values",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 8,
+                        "referencedDeclaration": 12,
                         "src": "1215:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -6501,7 +6501,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1567:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -6597,7 +6597,7 @@
                         "lValueRequested": false,
                         "memberName": "indexes",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 12,
+                        "referencedDeclaration": 8,
                         "src": "1610:12:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -6674,7 +6674,7 @@
                         "lValueRequested": false,
                         "memberName": "values",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 8,
+                        "referencedDeclaration": 12,
                         "src": "1639:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -6962,7 +6962,7 @@
                               "lValueRequested": false,
                               "memberName": "indexes",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 12,
+                              "referencedDeclaration": 8,
                               "src": "1825:12:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
@@ -7082,7 +7082,7 @@
                               "lValueRequested": false,
                               "memberName": "values",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 8,
+                              "referencedDeclaration": 12,
                               "src": "1863:11:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes32_$_t_bytes_storage_$",
@@ -7516,7 +7516,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.17",
-  "updatedAt": "2019-11-02T21:10:30.134Z",
+  "updatedAt": "2019-11-03T10:43:18.357Z",
   "devdoc": {
     "methods": {}
   },

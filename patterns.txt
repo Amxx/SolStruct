@@ -3,3 +3,4 @@ LibSet<bytes32>
 LibSet<uint256>
 LibMap<bytes4,address>
 LibMap<bytes32,bytes>
+LibMap2<bytes4,address,bytes>

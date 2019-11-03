@@ -1,12 +1,13 @@
 pragma solidity ^0.5.0;
 
-library LibMap_<KEY>_<VALUE>
+library LibMap2_<KEY>_<VALUE1>_<VALUE2>
 {
 	struct map
 	{
 		<KEY>[] keys;
 		mapping(<KEY> => uint256) indexes;
-		mapping(<KEY> => <VALUE>) values;
+		mapping(<KEY> => <VALUE1>) values1;
+		mapping(<KEY> => <VALUE2>) values2;
 	}
 
 	function length(map storage _map)
@@ -16,9 +17,21 @@ library LibMap_<KEY>_<VALUE>
 	}
 
 	function value(map storage _map, <KEY> <KEY_LOCATION> _key)
-	internal view returns (<VALUE> <VALUE_LOCATION>)
+	internal view returns (<VALUE1> <VALUE1_LOCATION>, <VALUE2> <VALUE2_LOCATION>)
 	{
-		return _map.values[_key];
+		return (value1(_map, _key), value2(_map, _key));
+	}
+
+	function value1(map storage _map, <KEY> <KEY_LOCATION> _key)
+	internal view returns (<VALUE1> <VALUE1_LOCATION>)
+	{
+		return _map.values1[_key];
+	}
+
+	function value2(map storage _map, <KEY> <KEY_LOCATION> _key)
+	internal view returns (<VALUE2> <VALUE2_LOCATION>)
+	{
+		return _map.values2[_key];
 	}
 
 	function at(map storage _map, uint256 _index)
@@ -28,10 +41,10 @@ library LibMap_<KEY>_<VALUE>
 	}
 
 	function entryAt(map storage _map, uint256 _index)
-	internal view returns (<KEY> <KEY_LOCATION>, <VALUE> <VALUE_LOCATION>)
+	internal view returns (<KEY> <KEY_LOCATION>, <VALUE1> <VALUE1_LOCATION>, <VALUE2> <VALUE2_LOCATION>)
 	{
 		<KEY> <KEY_LOCATION> key = at(_map, _index);
-		return (key, value(_map, key));
+		return (key, value1(_map, key), value2(_map, key));
 	}
 
 	function indexOf(map storage _map, <KEY> <KEY_LOCATION> _key)
@@ -52,14 +65,19 @@ library LibMap_<KEY>_<VALUE>
 		return _map.keys;
 	}
 
-	function set(map storage _map, <KEY> <KEY_LOCATION> _key, <VALUE> <VALUE_LOCATION> _value)
+	function set(
+		map storage _map,
+		<KEY> <KEY_LOCATION> _key,
+		<VALUE1> <VALUE1_LOCATION> _value1,
+		<VALUE2> <VALUE2_LOCATION> _value2)
 	internal returns (bool)
 	{
 		if (!contains(_map, _key))
 		{
 			_map.indexes[_key] = _map.keys.push(_key);
 		}
-		_map.values[_key] = _value;
+		_map.values1[_key] = _value1;
+		_map.values2[_key] = _value2;
 		return true;
 	}
 
@@ -82,7 +100,8 @@ library LibMap_<KEY>_<VALUE>
 		}
 
 		delete _map.indexes[_key];
-		delete _map.values[_key];
+		delete _map.values1[_key];
+		delete _map.values2[_key];
 		--_map.keys.length;
 
 		return true;
@@ -94,7 +113,8 @@ library LibMap_<KEY>_<VALUE>
 		for (uint256 i = 0; i < _map.keys.length; ++i)
 		{
 			delete _map.indexes[_map.keys[i]];
-			delete _map.values[_map.keys[i]];
+			delete _map.values1[_map.keys[i]];
+			delete _map.values2[_map.keys[i]];
 		}
 		_map.keys.length = 0;
 	}
