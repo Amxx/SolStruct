@@ -1,11 +1,14 @@
 pragma solidity ^0.5.0;
 
+import './LibSet.bytes4.sol';
+
 library LibMap2_bytes4_address_bytes
 {
+	using LibSet_bytes4 for LibSet_bytes4.set;
+
 	struct map
 	{
-		bytes4[] keys;
-		mapping(bytes4 => uint256) indexes;
+		LibSet_bytes4.set keys;
 		mapping(bytes4 => address) values1;
 		mapping(bytes4 => bytes) values2;
 	}
@@ -13,13 +16,7 @@ library LibMap2_bytes4_address_bytes
 	function length(map storage _map)
 	internal view returns (uint256)
 	{
-		return _map.keys.length;
-	}
-
-	function value(map storage _map, bytes4  _key)
-	internal view returns (address , bytes memory)
-	{
-		return (value1(_map, _key), value2(_map, _key));
+		return _map.keys.length();
 	}
 
 	function value1(map storage _map, bytes4  _key)
@@ -34,35 +31,35 @@ library LibMap2_bytes4_address_bytes
 		return _map.values2[_key];
 	}
 
-	function at(map storage _map, uint256 _index)
+	function keyAt(map storage _map, uint256 _index)
 	internal view returns (bytes4 )
 	{
-		return _map.keys[_index - 1];
+		return _map.keys.at(_index);
 	}
 
-	function entryAt(map storage _map, uint256 _index)
+	function at(map storage _map, uint256 _index)
 	internal view returns (bytes4 , address , bytes memory)
 	{
-		bytes4  key = at(_map, _index);
+		bytes4  key = keyAt(_map, _index);
 		return (key, value1(_map, key), value2(_map, key));
 	}
 
 	function indexOf(map storage _map, bytes4  _key)
 	internal view returns (uint256)
 	{
-		return _map.indexes[_key];
+		return _map.keys.indexOf(_key);
 	}
 
 	function contains(map storage _map, bytes4  _key)
 	internal view returns (bool)
 	{
-		return indexOf(_map, _key) != 0;
+		return _map.keys.contains(_key);
 	}
 
 	function keys(map storage _map)
 	internal view returns (bytes4[] memory)
 	{
-		return _map.keys;
+		return _map.keys.content();
 	}
 
 	function set(
@@ -72,50 +69,30 @@ library LibMap2_bytes4_address_bytes
 		bytes memory _value2)
 	internal returns (bool)
 	{
-		if (!contains(_map, _key))
-		{
-			_map.indexes[_key] = _map.keys.push(_key);
-		}
+		_map.keys.add(_key);
 		_map.values1[_key] = _value1;
 		_map.values2[_key] = _value2;
 		return true;
 	}
 
-	function remove(map storage _map, bytes4  _key)
+	function del(map storage _map, bytes4  _key)
 	internal returns (bool)
 	{
-		if (!contains(_map, _key))
-		{
-			return false;
-		}
-
-		uint256 i    = indexOf(_map, _key);
-		uint256 last = length(_map);
-
-		if (i != last)
-		{
-			bytes4  swapValue = _map.keys[last - 1];
-			_map.keys[i - 1] = swapValue;
-			_map.indexes[swapValue] = i;
-		}
-
-		delete _map.indexes[_key];
+		_map.keys.remove(_key);
 		delete _map.values1[_key];
 		delete _map.values2[_key];
-		--_map.keys.length;
-
 		return true;
 	}
 
 	function clear(map storage _map)
 	internal returns (bool)
 	{
-		for (uint256 i = 0; i < _map.keys.length; ++i)
+		for (uint256 i = 0; i < _map.keys.length(); ++i)
 		{
-			delete _map.indexes[_map.keys[i]];
-			delete _map.values1[_map.keys[i]];
-			delete _map.values2[_map.keys[i]];
+			bytes4  key = keyAt(_map, i);
+			delete _map.values1[key];
+			delete _map.values2[key];
 		}
-		_map.keys.length = 0;
+		_map.keys.clear();
 	}
 }

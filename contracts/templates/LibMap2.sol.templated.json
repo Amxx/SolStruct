@@ -1,3 +1,4 @@
 {
-	"args": [ "KEY", "VALUE1", "VALUE2" ]
+	"args": [ "KEY", "VALUE1", "VALUE2" ],
+	"dependencies": [ "LibSet<KEY>" ]
 }

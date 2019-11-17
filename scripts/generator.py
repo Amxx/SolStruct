@@ -17,6 +17,12 @@ def generate(entry):
 		target  = '{}/{}.{}.sol'.format(DST, type, '.'.join(args))
 		details = json.load(open('{}/{}.sol.templated.json'.format(SRC, type), 'r'))
 
+		if 'dependencies' in details:
+			for dep in details['dependencies']:
+				for (key, type) in zip(details['args'], args):
+					dep = dep.replace('<{}>'.format(key), '<{}>'.format(type))
+				generate(dep)
+
 		for (key, type) in zip(details['args'], args):
 			code = code.replace('<{}>'.format(key), type)
 			code = code.replace('<{}_LOCATION>'.format(key), 'memory' if solidity.types[type]['reference'] else '')
