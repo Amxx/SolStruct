@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >0.5.0 <0.7.0;
 
 library LibSet_bytes32
 {
@@ -45,7 +45,8 @@ library LibSet_bytes32
 		{
 			return false;
 		}
-		_set.indexes[_value] = _set.values.push(_value);
+		_set.values.push(_value);
+		_set.indexes[_value] = _set.values.length;
 		return true;
 	}
 
@@ -68,7 +69,7 @@ library LibSet_bytes32
 		}
 
 		delete _set.indexes[_value];
-		--_set.values.length;
+		_set.values.pop();
 
 		return true;
 	}
@@ -76,10 +77,10 @@ library LibSet_bytes32
 	function clear(set storage _set)
 	internal returns (bool)
 	{
-		for (uint256 i = 0; i < _set.values.length; ++i)
+		for (uint256 i = _set.values.length; i > 0; --i)
 		{
-			delete _set.indexes[_set.values[i]];
+			delete _set.indexes[_set.values[i-1]];
+			_set.values.pop();
 		}
-		_set.values.length = 0;
 	}
 }
