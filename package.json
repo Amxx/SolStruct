@@ -1,6 +1,6 @@
 {
   "name": "solstruct",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A library of templated solidity structures",
   "author": "Hadrien Croubois <hc@iex.ec>",
   "license": "MIT",
