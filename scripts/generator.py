@@ -1,12 +1,18 @@
 #!/usr/bin/python3
 
 import json
+import os
 import re
 import solidity
 
 SRC      = './contracts/templates'
 DST      = './contracts/libs'
 PATTERNS = './patterns.txt'
+
+def ensure_dir(path):
+	directory = os.path.dirname(path)
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 
 def generate(entry):
 	try:
@@ -27,6 +33,7 @@ def generate(entry):
 			code = code.replace('<{}>'.format(key), type)
 			code = code.replace('<{}_LOCATION>'.format(key), 'memory' if solidity.types[type]['reference'] else '')
 
+		ensure_dir(target)
 		open(target, 'w').write(code)
 		print('→ {} generated'.format(target))
 	except:
