@@ -1,9 +1,9 @@
 {
   "contractName": "LibMap_bytes32_bytes",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":\"LibMap_bytes32_bytes\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":{\"keccak256\":\"0x41f90333cf22156e6398af936b5f5a9fc6a6ebe425eff018b7be2e8378d43b74\",\"urls\":[\"bzz-raw://b8581f2ff53c6df76549ebf7d44d95e21e9ced52b06cf8e1297c83e1c845d3e6\",\"dweb:/ipfs/QmbW2YydmQW1nDAohtxh8vjLkbv18L1YkHscDBTzgoBdXd\"]},\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes32.sol\":{\"keccak256\":\"0xdac612ab0ed2a685ef2f4262a3b0f254511ce1a7b0ddcc27d2c225340789024f\",\"urls\":[\"bzz-raw://c012fb778892e3bbf355277e6ae4f9e39ab887734ab5eb4ff22d5bd3abe17692\",\"dweb:/ipfs/QmQzgGVPmKgjfDPhaTwB5gUF8LM6grmQRkT3Ei9SYqY2mU\"]}},\"version\":1}",
-  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cb27e341225f3b7b2d21eba230b7def4bc7838ad9f6b81997beee95c0d1c61664736f6c63430006000033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212206cb27e341225f3b7b2d21eba230b7def4bc7838ad9f6b81997beee95c0d1c61664736f6c63430006000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":\"LibMap_bytes32_bytes\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes32.bytes.sol\":{\"keccak256\":\"0x41f90333cf22156e6398af936b5f5a9fc6a6ebe425eff018b7be2e8378d43b74\",\"urls\":[\"bzz-raw://b8581f2ff53c6df76549ebf7d44d95e21e9ced52b06cf8e1297c83e1c845d3e6\",\"dweb:/ipfs/QmbW2YydmQW1nDAohtxh8vjLkbv18L1YkHscDBTzgoBdXd\"]},\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes32.sol\":{\"keccak256\":\"0xcd885ac017dff493f0be9944735037acaa593d6543e5e2275ed22f64240534f9\",\"urls\":[\"bzz-raw://5bde30ba1d2a02a8cf4cbb9ad07fc1ca82328a701d60fa0fc5f2e3987c610cec\",\"dweb:/ipfs/QmfTot1LYAGgfkogYtSMdnD3MD52G76ndpDRdcuMDuePKM\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b9d43dd05aa99f5f3719668ccc8847b3fafadb2767ea17252405db96e8fcd75064736f6c63430006000033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b9d43dd05aa99f5f3719668ccc8847b3fafadb2767ea17252405db96e8fcd75064736f6c63430006000033",
   "sourceMap": "64:1544:0:-:0;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
   "deployedSourceMap": "64:1544:0:-:0;;;;;;;;",
   "source": "pragma solidity >0.5.0 <0.7.0;\n\nimport './LibSet.bytes32.sol';\n\nlibrary LibMap_bytes32_bytes\n{\n\tusing LibSet_bytes32 for LibSet_bytes32.set;\n\n\tstruct map\n\t{\n\t\tLibSet_bytes32.set keys;\n\t\tmapping(bytes32 => bytes) values;\n\t}\n\n\tfunction length(map storage _map)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keys.length();\n\t}\n\n\tfunction value(map storage _map, bytes32  _key)\n\tinternal view returns (bytes memory)\n\t{\n\t\treturn _map.values[_key];\n\t}\n\n\tfunction keyAt(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 )\n\t{\n\t\treturn _map.keys.at(_index);\n\t}\n\n\tfunction at(map storage _map, uint256 _index)\n\tinternal view returns (bytes32 , bytes memory)\n\t{\n\t\tbytes32  key = keyAt(_map, _index);\n\t\treturn (key, value(_map, key));\n\t}\n\n\tfunction indexOf(map storage _map, bytes32  _key)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keys.indexOf(_key);\n\t}\n\n\tfunction contains(map storage _map, bytes32  _key)\n\tinternal view returns (bool)\n\t{\n\t\treturn _map.keys.contains(_key);\n\t}\n\n\tfunction keys(map storage _map)\n\tinternal view returns (bytes32[] memory)\n\t{\n\t\treturn _map.keys.content();\n\t}\n\n\tfunction set(map storage _map, bytes32  _key, bytes memory _value)\n\tinternal returns (bool)\n\t{\n\t\t_map.keys.add(_key);\n\t\t_map.values[_key] = _value;\n\t\treturn true;\n\t}\n\n\tfunction del(map storage _map, bytes32  _key)\n\tinternal returns (bool)\n\t{\n\t\t_map.keys.remove(_key);\n\t\tdelete _map.values[_key];\n\t\treturn true;\n\t}\n\n\tfunction clear(map storage _map)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = 0; i < _map.keys.length(); ++i)\n\t\t{\n\t\t\tdelete _map.values[keyAt(_map, i)];\n\t\t}\n\t\t_map.keys.clear();\n\t}\n}\n",
@@ -38,7 +38,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 225,
-        "sourceUnit": 1709,
+        "sourceUnit": 1715,
         "src": "32:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -64,10 +64,10 @@
               "id": 3,
               "name": "LibSet_bytes32",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1708,
+              "referencedDeclaration": 1714,
               "src": "102:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_LibSet_bytes32_$1708",
+                "typeIdentifier": "t_contract$_LibSet_bytes32_$1714",
                 "typeString": "library LibSet_bytes32"
               }
             },
@@ -78,10 +78,10 @@
               "id": 4,
               "name": "LibSet_bytes32.set",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1477,
+              "referencedDeclaration": 1480,
               "src": "121:18:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                 "typeString": "struct LibSet_bytes32.set"
               }
             }
@@ -101,7 +101,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                  "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                   "typeString": "struct LibSet_bytes32.set"
                 },
                 "typeName": {
@@ -109,10 +109,10 @@
                   "id": 6,
                   "name": "LibSet_bytes32.set",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1477,
+                  "referencedDeclaration": 1480,
                   "src": "159:18:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                    "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                     "typeString": "struct LibSet_bytes32.set"
                   }
                 },
@@ -209,7 +209,7 @@
                         "referencedDeclaration": 7,
                         "src": "304:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -220,10 +220,10 @@
                       "lValueRequested": false,
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1489,
+                      "referencedDeclaration": 1492,
                       "src": "304:16:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (uint256)"
                       }
                     },
@@ -570,7 +570,7 @@
                         "referencedDeclaration": 7,
                         "src": "546:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -581,10 +581,10 @@
                       "lValueRequested": false,
                       "memberName": "at",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1506,
+                      "referencedDeclaration": 1509,
                       "src": "546:12:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_uint256_$returns$_t_bytes32_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_uint256_$returns$_t_bytes32_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,uint256) view returns (bytes32)"
                       }
                     },
@@ -1130,7 +1130,7 @@
                         "referencedDeclaration": 7,
                         "src": "842:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -1141,10 +1141,10 @@
                       "lValueRequested": false,
                       "memberName": "indexOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1521,
+                      "referencedDeclaration": 1524,
                       "src": "842:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) view returns (uint256)"
                       }
                     },
@@ -1337,7 +1337,7 @@
                         "referencedDeclaration": 7,
                         "src": "965:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -1348,10 +1348,10 @@
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1538,
+                      "referencedDeclaration": 1541,
                       "src": "965:18:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) view returns (bool)"
                       }
                     },
@@ -1525,7 +1525,7 @@
                         "referencedDeclaration": 7,
                         "src": "1082:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -1536,10 +1536,10 @@
                       "lValueRequested": false,
                       "memberName": "content",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1550,
+                      "referencedDeclaration": 1553,
                       "src": "1082:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_array$_t_bytes32_$dyn_memory_ptr_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_array$_t_bytes32_$dyn_memory_ptr_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (bytes32[] memory)"
                       }
                     },
@@ -1715,7 +1715,7 @@
                         "referencedDeclaration": 7,
                         "src": "1205:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -1726,10 +1726,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1588,
+                      "referencedDeclaration": 1591,
                       "src": "1205:13:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) returns (bool)"
                       }
                     },
@@ -2061,7 +2061,7 @@
                         "referencedDeclaration": 7,
                         "src": "1352:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -2072,10 +2072,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1667,
+                      "referencedDeclaration": 1670,
                       "src": "1352:16:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) returns (bool)"
                       }
                     },
@@ -2513,7 +2513,7 @@
                           "referencedDeclaration": 7,
                           "src": "1511:9:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_set_$1477_storage",
+                            "typeIdentifier": "t_struct$_set_$1480_storage",
                             "typeString": "struct LibSet_bytes32.set storage ref"
                           }
                         },
@@ -2524,10 +2524,10 @@
                         "lValueRequested": false,
                         "memberName": "length",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1489,
+                        "referencedDeclaration": 1492,
                         "src": "1511:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                          "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                           "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (uint256)"
                         }
                       },
@@ -2676,7 +2676,7 @@
                         "referencedDeclaration": 7,
                         "src": "1585:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -2687,10 +2687,10 @@
                       "lValueRequested": false,
                       "memberName": "clear",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1707,
+                      "referencedDeclaration": 1713,
                       "src": "1585:15:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) returns (bool)"
                       }
                     },
@@ -2836,7 +2836,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 225,
-        "sourceUnit": 1709,
+        "sourceUnit": 1715,
         "src": "32:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2862,10 +2862,10 @@
               "id": 3,
               "name": "LibSet_bytes32",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1708,
+              "referencedDeclaration": 1714,
               "src": "102:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_LibSet_bytes32_$1708",
+                "typeIdentifier": "t_contract$_LibSet_bytes32_$1714",
                 "typeString": "library LibSet_bytes32"
               }
             },
@@ -2876,10 +2876,10 @@
               "id": 4,
               "name": "LibSet_bytes32.set",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1477,
+              "referencedDeclaration": 1480,
               "src": "121:18:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                 "typeString": "struct LibSet_bytes32.set"
               }
             }
@@ -2899,7 +2899,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                  "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                   "typeString": "struct LibSet_bytes32.set"
                 },
                 "typeName": {
@@ -2907,10 +2907,10 @@
                   "id": 6,
                   "name": "LibSet_bytes32.set",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 1477,
+                  "referencedDeclaration": 1480,
                   "src": "159:18:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_set_$1477_storage_ptr",
+                    "typeIdentifier": "t_struct$_set_$1480_storage_ptr",
                     "typeString": "struct LibSet_bytes32.set"
                   }
                 },
@@ -3007,7 +3007,7 @@
                         "referencedDeclaration": 7,
                         "src": "304:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -3018,10 +3018,10 @@
                       "lValueRequested": false,
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1489,
+                      "referencedDeclaration": 1492,
                       "src": "304:16:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (uint256)"
                       }
                     },
@@ -3368,7 +3368,7 @@
                         "referencedDeclaration": 7,
                         "src": "546:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -3379,10 +3379,10 @@
                       "lValueRequested": false,
                       "memberName": "at",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1506,
+                      "referencedDeclaration": 1509,
                       "src": "546:12:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_uint256_$returns$_t_bytes32_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_uint256_$returns$_t_bytes32_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,uint256) view returns (bytes32)"
                       }
                     },
@@ -3928,7 +3928,7 @@
                         "referencedDeclaration": 7,
                         "src": "842:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -3939,10 +3939,10 @@
                       "lValueRequested": false,
                       "memberName": "indexOf",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1521,
+                      "referencedDeclaration": 1524,
                       "src": "842:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) view returns (uint256)"
                       }
                     },
@@ -4135,7 +4135,7 @@
                         "referencedDeclaration": 7,
                         "src": "965:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -4146,10 +4146,10 @@
                       "lValueRequested": false,
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1538,
+                      "referencedDeclaration": 1541,
                       "src": "965:18:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) view returns (bool)"
                       }
                     },
@@ -4323,7 +4323,7 @@
                         "referencedDeclaration": 7,
                         "src": "1082:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -4334,10 +4334,10 @@
                       "lValueRequested": false,
                       "memberName": "content",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1550,
+                      "referencedDeclaration": 1553,
                       "src": "1082:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_array$_t_bytes32_$dyn_memory_ptr_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_array$_t_bytes32_$dyn_memory_ptr_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (bytes32[] memory)"
                       }
                     },
@@ -4513,7 +4513,7 @@
                         "referencedDeclaration": 7,
                         "src": "1205:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -4524,10 +4524,10 @@
                       "lValueRequested": false,
                       "memberName": "add",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1588,
+                      "referencedDeclaration": 1591,
                       "src": "1205:13:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) returns (bool)"
                       }
                     },
@@ -4859,7 +4859,7 @@
                         "referencedDeclaration": 7,
                         "src": "1352:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -4870,10 +4870,10 @@
                       "lValueRequested": false,
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1667,
+                      "referencedDeclaration": 1670,
                       "src": "1352:16:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$_t_bytes32_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer,bytes32) returns (bool)"
                       }
                     },
@@ -5311,7 +5311,7 @@
                           "referencedDeclaration": 7,
                           "src": "1511:9:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_set_$1477_storage",
+                            "typeIdentifier": "t_struct$_set_$1480_storage",
                             "typeString": "struct LibSet_bytes32.set storage ref"
                           }
                         },
@@ -5322,10 +5322,10 @@
                         "lValueRequested": false,
                         "memberName": "length",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1489,
+                        "referencedDeclaration": 1492,
                         "src": "1511:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1477_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                          "typeIdentifier": "t_function_internal_view$_t_struct$_set_$1480_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                           "typeString": "function (struct LibSet_bytes32.set storage pointer) view returns (uint256)"
                         }
                       },
@@ -5474,7 +5474,7 @@
                         "referencedDeclaration": 7,
                         "src": "1585:9:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_set_$1477_storage",
+                          "typeIdentifier": "t_struct$_set_$1480_storage",
                           "typeString": "struct LibSet_bytes32.set storage ref"
                         }
                       },
@@ -5485,10 +5485,10 @@
                       "lValueRequested": false,
                       "memberName": "clear",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1707,
+                      "referencedDeclaration": 1713,
                       "src": "1585:15:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1477_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$1477_storage_ptr_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$1480_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$1480_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes32.set storage pointer) returns (bool)"
                       }
                     },
@@ -5609,8 +5609,8 @@
     "version": "0.6.0+commit.26b70077.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.20",
-  "updatedAt": "2019-12-20T23:32:40.074Z",
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-02-17T14:42:45.694Z",
   "devdoc": {
     "methods": {}
   },

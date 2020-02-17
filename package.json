@@ -1,6 +1,6 @@
 {
   "name": "solstruct",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A library of templated solidity structures",
   "author": "Hadrien Croubois <hc@iex.ec>",
   "license": "MIT",
@@ -25,8 +25,8 @@
     "clear": "rm -fv contracts/libs/* build/contracts/*"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "openzeppelin-test-helpers": "^0.5.1",
-    "truffle": "^5.1.5"
+    "chai": "4.2.0",
+    "openzeppelin-test-helpers": "0.5.1",
+    "truffle": "5.1.13"
   }
 }

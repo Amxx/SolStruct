@@ -80,7 +80,7 @@ library LibSet_bytes32
 		for (uint256 i = _set.values.length; i > 0; --i)
 		{
 			delete _set.indexes[_set.values[i-1]];
-			_set.values.pop();
 		}
+		_set.values = new bytes32[](0);
 	}
 }
