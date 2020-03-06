@@ -2,6 +2,7 @@ LibSet<address>
 LibSet<bytes32>
 LibSet<uint256>
 LibMap<bytes4,address>
+LibMap<bytes32,bytes32>
 LibMap<bytes32,bytes>
 LibMap<bytes32,string>
 LibMap2<bytes4,address,bytes>
