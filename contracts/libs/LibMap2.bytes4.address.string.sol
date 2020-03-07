@@ -89,7 +89,7 @@ library LibMap2_bytes4_address_string
 	{
 		for (uint256 i = _map.keyset.length(); i > 0; --i)
 		{
-			bytes4  key = keyAt(_map, i-1);
+			bytes4  key = keyAt(_map, i);
 			delete _map.values1[key];
 			delete _map.values2[key];
 		}
