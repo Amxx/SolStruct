@@ -74,9 +74,9 @@ library LibMap_bytes4_address
 	function clear(map storage _map)
 	internal returns (bool)
 	{
-		for (uint256 i = 0; i < _map.keys.length(); ++i)
+		for (uint256 i = _map.keys.length(); i > 0; --i)
 		{
-			delete _map.values[keyAt(_map, i)];
+			delete _map.values[keyAt(_map, i-1)];
 		}
 		_map.keys.clear();
 	}
