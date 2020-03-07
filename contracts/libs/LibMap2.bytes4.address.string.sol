@@ -94,5 +94,6 @@ library LibMap2_bytes4_address_string
 			delete _map.values2[key];
 		}
 		_map.keys.clear();
+		return true;
 	}
 }

@@ -82,5 +82,6 @@ library LibSet_uint256
 			delete _set.indexes[_set.values[i-1]];
 		}
 		_set.values = new uint256[](0);
+		return true;
 	}
 }

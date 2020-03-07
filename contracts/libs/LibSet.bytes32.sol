@@ -82,5 +82,6 @@ library LibSet_bytes32
 			delete _set.indexes[_set.values[i-1]];
 		}
 		_set.values = new bytes32[](0);
+		return true;
 	}
 }

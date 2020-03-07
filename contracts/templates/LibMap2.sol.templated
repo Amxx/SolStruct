@@ -94,5 +94,6 @@ library LibMap2_<KEY>_<VALUE1>_<VALUE2>
 			delete _map.values2[key];
 		}
 		_map.keys.clear();
+		return true;
 	}
 }

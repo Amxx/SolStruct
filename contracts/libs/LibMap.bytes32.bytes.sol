@@ -79,5 +79,6 @@ library LibMap_bytes32_bytes
 			delete _map.values[keyAt(_map, i-1)];
 		}
 		_map.keys.clear();
+		return true;
 	}
 }

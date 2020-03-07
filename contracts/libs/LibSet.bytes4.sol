@@ -82,5 +82,6 @@ library LibSet_bytes4
 			delete _set.indexes[_set.values[i-1]];
 		}
 		_set.values = new bytes4[](0);
+		return true;
 	}
 }

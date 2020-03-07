@@ -82,5 +82,6 @@ library LibSet_address
 			delete _set.indexes[_set.values[i-1]];
 		}
 		_set.values = new address[](0);
+		return true;
 	}
 }

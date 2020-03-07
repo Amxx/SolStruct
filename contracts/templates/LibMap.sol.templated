@@ -79,5 +79,6 @@ library LibMap_<KEY>_<VALUE>
 			delete _map.values[keyAt(_map, i-1)];
 		}
 		_map.keys.clear();
+		return true;
 	}
 }

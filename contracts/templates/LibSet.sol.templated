@@ -82,5 +82,6 @@ library LibSet_<VALUE>
 			delete _set.indexes[_set.values[i-1]];
 		}
 		_set.values = new <VALUE>[](0);
+		return true;
 	}
 }

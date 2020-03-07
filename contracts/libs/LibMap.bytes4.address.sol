@@ -79,5 +79,6 @@ library LibMap_bytes4_address
 			delete _map.values[keyAt(_map, i-1)];
 		}
 		_map.keys.clear();
+		return true;
 	}
 }
