@@ -8,14 +8,14 @@ library LibMap_bytes32_string
 
 	struct map
 	{
-		LibSet_bytes32.set keys;
+		LibSet_bytes32.set keyset;
 		mapping(bytes32 => string) values;
 	}
 
 	function length(map storage _map)
 	internal view returns (uint256)
 	{
-		return _map.keys.length();
+		return _map.keyset.length();
 	}
 
 	function value(map storage _map, bytes32  _key)
@@ -27,7 +27,7 @@ library LibMap_bytes32_string
 	function keyAt(map storage _map, uint256 _index)
 	internal view returns (bytes32 )
 	{
-		return _map.keys.at(_index);
+		return _map.keyset.at(_index);
 	}
 
 	function at(map storage _map, uint256 _index)
@@ -40,25 +40,25 @@ library LibMap_bytes32_string
 	function indexOf(map storage _map, bytes32  _key)
 	internal view returns (uint256)
 	{
-		return _map.keys.indexOf(_key);
+		return _map.keyset.indexOf(_key);
 	}
 
 	function contains(map storage _map, bytes32  _key)
 	internal view returns (bool)
 	{
-		return _map.keys.contains(_key);
+		return _map.keyset.contains(_key);
 	}
 
 	function keys(map storage _map)
 	internal view returns (bytes32[] memory)
 	{
-		return _map.keys.content();
+		return _map.keyset.content();
 	}
 
 	function set(map storage _map, bytes32  _key, string memory _value)
 	internal returns (bool)
 	{
-		_map.keys.add(_key);
+		_map.keyset.add(_key);
 		_map.values[_key] = _value;
 		return true;
 	}
@@ -66,7 +66,7 @@ library LibMap_bytes32_string
 	function del(map storage _map, bytes32  _key)
 	internal returns (bool)
 	{
-		_map.keys.remove(_key);
+		_map.keyset.remove(_key);
 		delete _map.values[_key];
 		return true;
 	}
@@ -74,11 +74,11 @@ library LibMap_bytes32_string
 	function clear(map storage _map)
 	internal returns (bool)
 	{
-		for (uint256 i = _map.keys.length(); i > 0; --i)
+		for (uint256 i = _map.keyset.length(); i > 0; --i)
 		{
-			delete _map.values[keyAt(_map, i-1)];
+			delete _map.values[keyAt(_map, i)];
 		}
-		_map.keys.clear();
+		_map.keyset.clear();
 		return true;
 	}
 }

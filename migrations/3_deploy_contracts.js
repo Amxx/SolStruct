@@ -1,5 +1,5 @@
-var LibSet_uint256 = artifacts.require('LibSet_uint256')
-var TestSet        = artifacts.require('TestSet')
+var TestSet = artifacts.require('TestSet')
+var TestMap = artifacts.require('TestMap')
 
 module.exports = async function(deployer, network, accounts)
 {
@@ -9,7 +9,6 @@ module.exports = async function(deployer, network, accounts)
 	console.log('Chainid is:', chainid);
 	console.log('Chaintype is:', chaintype);
 
-	await deployer.deploy(LibSet_uint256);
-	await deployer.link(LibSet_uint256, TestSet);
 	await deployer.deploy(TestSet);
+	await deployer.deploy(TestMap);
 };
