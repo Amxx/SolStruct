@@ -1,12 +1,12 @@
 {
   "contractName": "LibMap_bytes4_address",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.3+commit.8dda9521\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol\":\"LibMap_bytes4_address\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol\":{\"keccak256\":\"0xfbfcb7af5a97427d56df2d621b191e6476151cc68be247f4406afbeac8338791\",\"urls\":[\"bzz-raw://abd2235c2536274632b286a71bd22ade461fb159ea97a5cd726d855eb459a900\",\"dweb:/ipfs/QmXSA7JYj1Ck2Sf41Xg8ZaRNoRM1No7JN2PTzygj4HGSGR\"]},\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes4.sol\":{\"keccak256\":\"0xdec5833ab65ae8cab500b84424dde49c1f7817c6575e1631a729fc88c6d4bd7f\",\"urls\":[\"bzz-raw://2e5d23b8383819e6dd77ea61ed30740bcba45b0fff609922b11d1cae2b0223f1\",\"dweb:/ipfs/QmQ27sefXEYXBUSEGdPkuzCqemtUJzNXhhsyd7kB94w6CE\"]}},\"version\":1}",
-  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122015ad0c6a1dcd3a5b5cfc53f6010f257a3b0ca568b84d0aa4a6cffad39cf0d99064736f6c63430006030033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122015ad0c6a1dcd3a5b5cfc53f6010f257a3b0ca568b84d0aa4a6cffad39cf0d99064736f6c63430006030033",
-  "sourceMap": "63:1557:3:-:0;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
-  "deployedSourceMap": "63:1557:3:-:0;;;;;;12:1:-1;9;2:12",
-  "source": "pragma solidity >0.5.0 <0.7.0;\n\nimport './LibSet.bytes4.sol';\n\nlibrary LibMap_bytes4_address\n{\n\tusing LibSet_bytes4 for LibSet_bytes4.set;\n\n\tstruct map\n\t{\n\t\tLibSet_bytes4.set keyset;\n\t\tmapping(bytes4 => address) values;\n\t}\n\n\tfunction length(map storage _map)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keyset.length();\n\t}\n\n\tfunction value(map storage _map, bytes4  _key)\n\tinternal view returns (address )\n\t{\n\t\treturn _map.values[_key];\n\t}\n\n\tfunction keyAt(map storage _map, uint256 _index)\n\tinternal view returns (bytes4 )\n\t{\n\t\treturn _map.keyset.at(_index);\n\t}\n\n\tfunction at(map storage _map, uint256 _index)\n\tinternal view returns (bytes4 , address )\n\t{\n\t\tbytes4  key = keyAt(_map, _index);\n\t\treturn (key, value(_map, key));\n\t}\n\n\tfunction indexOf(map storage _map, bytes4  _key)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keyset.indexOf(_key);\n\t}\n\n\tfunction contains(map storage _map, bytes4  _key)\n\tinternal view returns (bool)\n\t{\n\t\treturn _map.keyset.contains(_key);\n\t}\n\n\tfunction keys(map storage _map)\n\tinternal view returns (bytes4[] memory)\n\t{\n\t\treturn _map.keyset.content();\n\t}\n\n\tfunction set(map storage _map, bytes4  _key, address  _value)\n\tinternal returns (bool)\n\t{\n\t\t_map.keyset.add(_key);\n\t\t_map.values[_key] = _value;\n\t\treturn true;\n\t}\n\n\tfunction del(map storage _map, bytes4  _key)\n\tinternal returns (bool)\n\t{\n\t\t_map.keyset.remove(_key);\n\t\tdelete _map.values[_key];\n\t\treturn true;\n\t}\n\n\tfunction clear(map storage _map)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = _map.keyset.length(); i > 0; --i)\n\t\t{\n\t\t\tdelete _map.values[keyAt(_map, i)];\n\t\t}\n\t\t_map.keyset.clear();\n\t\treturn true;\n\t}\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.3+commit.8dda9521\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol\":\"LibMap_bytes4_address\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol\":{\"keccak256\":\"0x98cbf108cb3bcb533dbbab111a322e4eb30f71a4c2737a1bfa42a741f263bd34\",\"urls\":[\"bzz-raw://7d06a6fc2b34bfd107d2889ffcbce5a4e6a13273c974851412b1a5e7bbb3db52\",\"dweb:/ipfs/QmSLdEgKuFFmAHsK6VbzP9vDRF62vKedP2a3dZTFZ64gNZ\"]},\"/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes4.sol\":{\"keccak256\":\"0xbb3001b2c52c250106497a5567454442c021e575c696da948a472d4390e63920\",\"urls\":[\"bzz-raw://c639b4d68cf6152560d1826bb38fb162c6ee0d2a6fb4a56d0888d7a41efc58c5\",\"dweb:/ipfs/QmaKLDhS5BJPiobaktgMg5dYEML7JKRi2pkkvAmDQLJAXs\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212207621619192b02ea9ae925039b3d229e537f181d874ca571d9ed47596b9ace64c64736f6c63430006030033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212207621619192b02ea9ae925039b3d229e537f181d874ca571d9ed47596b9ace64c64736f6c63430006030033",
+  "sourceMap": "96:1557:3:-:0;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "96:1557:3:-:0;;;;;;12:1:-1;9;2:12",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >0.5.0 <0.8.0;\n\nimport './LibSet.bytes4.sol';\n\nlibrary LibMap_bytes4_address\n{\n\tusing LibSet_bytes4 for LibSet_bytes4.set;\n\n\tstruct map\n\t{\n\t\tLibSet_bytes4.set keyset;\n\t\tmapping(bytes4 => address) values;\n\t}\n\n\tfunction length(map storage _map)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keyset.length();\n\t}\n\n\tfunction value(map storage _map, bytes4  _key)\n\tinternal view returns (address )\n\t{\n\t\treturn _map.values[_key];\n\t}\n\n\tfunction keyAt(map storage _map, uint256 _index)\n\tinternal view returns (bytes4 )\n\t{\n\t\treturn _map.keyset.at(_index);\n\t}\n\n\tfunction at(map storage _map, uint256 _index)\n\tinternal view returns (bytes4 , address )\n\t{\n\t\tbytes4  key = keyAt(_map, _index);\n\t\treturn (key, value(_map, key));\n\t}\n\n\tfunction indexOf(map storage _map, bytes4  _key)\n\tinternal view returns (uint256)\n\t{\n\t\treturn _map.keyset.indexOf(_key);\n\t}\n\n\tfunction contains(map storage _map, bytes4  _key)\n\tinternal view returns (bool)\n\t{\n\t\treturn _map.keyset.contains(_key);\n\t}\n\n\tfunction keys(map storage _map)\n\tinternal view returns (bytes4[] memory)\n\t{\n\t\treturn _map.keyset.content();\n\t}\n\n\tfunction set(map storage _map, bytes4  _key, address  _value)\n\tinternal returns (bool)\n\t{\n\t\t_map.keyset.add(_key);\n\t\t_map.values[_key] = _value;\n\t\treturn true;\n\t}\n\n\tfunction del(map storage _map, bytes4  _key)\n\tinternal returns (bool)\n\t{\n\t\t_map.keyset.remove(_key);\n\t\tdelete _map.values[_key];\n\t\treturn true;\n\t}\n\n\tfunction clear(map storage _map)\n\tinternal returns (bool)\n\t{\n\t\tfor (uint256 i = _map.keyset.length(); i > 0; --i)\n\t\t{\n\t\t\tdelete _map.values[keyAt(_map, i)];\n\t\t}\n\t\t_map.keyset.clear();\n\t\treturn true;\n\t}\n}\n",
   "sourcePath": "/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol",
   "ast": {
     "absolutePath": "/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol",
@@ -26,11 +26,11 @@
           "0.5",
           ".0",
           "<",
-          "0.7",
+          "0.8",
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:30:3"
+        "src": "33:30:3"
       },
       {
         "absolutePath": "/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes4.sol",
@@ -39,7 +39,7 @@
         "nodeType": "ImportDirective",
         "scope": 908,
         "sourceUnit": 2429,
-        "src": "32:29:3",
+        "src": "65:29:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -65,21 +65,21 @@
               "name": "LibSet_bytes4",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2428,
-              "src": "102:13:3",
+              "src": "135:13:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_LibSet_bytes4_$2428",
                 "typeString": "library LibSet_bytes4"
               }
             },
             "nodeType": "UsingForDirective",
-            "src": "96:42:3",
+            "src": "129:42:3",
             "typeName": {
               "contractScope": null,
               "id": 685,
               "name": "LibSet_bytes4.set",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2192,
-              "src": "120:17:3",
+              "src": "153:17:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_struct$_set_$2192_storage_ptr",
                 "typeString": "struct LibSet_bytes4.set"
@@ -97,7 +97,7 @@
                 "nodeType": "VariableDeclaration",
                 "overrides": null,
                 "scope": 693,
-                "src": "157:24:3",
+                "src": "190:24:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -110,7 +110,7 @@
                   "name": "LibSet_bytes4.set",
                   "nodeType": "UserDefinedTypeName",
                   "referencedDeclaration": 2192,
-                  "src": "157:17:3",
+                  "src": "190:17:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_struct$_set_$2192_storage_ptr",
                     "typeString": "struct LibSet_bytes4.set"
@@ -126,7 +126,7 @@
                 "nodeType": "VariableDeclaration",
                 "overrides": null,
                 "scope": 693,
-                "src": "185:33:3",
+                "src": "218:33:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -139,14 +139,14 @@
                     "id": 689,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "193:6:3",
+                    "src": "226:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "185:26:3",
+                  "src": "218:26:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                     "typeString": "mapping(bytes4 => address)"
@@ -155,7 +155,7 @@
                     "id": 690,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "203:7:3",
+                    "src": "236:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -170,14 +170,14 @@
             "name": "map",
             "nodeType": "StructDefinition",
             "scope": 907,
-            "src": "141:81:3",
+            "src": "174:81:3",
             "visibility": "public"
           },
           {
             "body": {
               "id": 705,
               "nodeType": "Block",
-              "src": "293:35:3",
+              "src": "326:35:3",
               "statements": [
                 {
                   "expression": {
@@ -194,7 +194,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 695,
-                          "src": "304:4:3",
+                          "src": "337:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -208,7 +208,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "304:11:3",
+                        "src": "337:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -222,7 +222,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2204,
-                      "src": "304:18:3",
+                      "src": "337:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (uint256)"
@@ -236,7 +236,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "304:20:3",
+                    "src": "337:20:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -246,7 +246,7 @@
                   "functionReturnParameters": 699,
                   "id": 704,
                   "nodeType": "Return",
-                  "src": "297:27:3"
+                  "src": "330:27:3"
                 }
               ]
             },
@@ -269,7 +269,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 706,
-                  "src": "241:16:3",
+                  "src": "274:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -282,7 +282,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "241:3:3",
+                    "src": "274:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -292,7 +292,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "240:18:3"
+              "src": "273:18:3"
             },
             "returnParameters": {
               "id": 699,
@@ -305,7 +305,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 706,
-                  "src": "283:7:3",
+                  "src": "316:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -316,7 +316,7 @@
                     "id": 697,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "283:7:3",
+                    "src": "316:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -326,10 +326,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "282:9:3"
+              "src": "315:9:3"
             },
             "scope": 907,
-            "src": "225:103:3",
+            "src": "258:103:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -338,7 +338,7 @@
             "body": {
               "id": 720,
               "nodeType": "Block",
-              "src": "413:32:3",
+              "src": "446:32:3",
               "statements": [
                 {
                   "expression": {
@@ -352,7 +352,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 708,
-                        "src": "424:4:3",
+                        "src": "457:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                           "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -366,7 +366,7 @@
                       "memberName": "values",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 692,
-                      "src": "424:11:3",
+                      "src": "457:11:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                         "typeString": "mapping(bytes4 => address)"
@@ -380,7 +380,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 710,
-                      "src": "436:4:3",
+                      "src": "469:4:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
@@ -391,7 +391,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "424:17:3",
+                    "src": "457:17:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -400,7 +400,7 @@
                   "functionReturnParameters": 714,
                   "id": 719,
                   "nodeType": "Return",
-                  "src": "417:24:3"
+                  "src": "450:24:3"
                 }
               ]
             },
@@ -423,7 +423,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "346:16:3",
+                  "src": "379:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -436,7 +436,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "346:3:3",
+                    "src": "379:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -452,7 +452,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "364:12:3",
+                  "src": "397:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -463,7 +463,7 @@
                     "id": 709,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "364:6:3",
+                    "src": "397:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -473,7 +473,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "345:32:3"
+              "src": "378:32:3"
             },
             "returnParameters": {
               "id": 714,
@@ -486,7 +486,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "402:7:3",
+                  "src": "435:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -497,7 +497,7 @@
                     "id": 712,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "402:7:3",
+                    "src": "435:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -508,10 +508,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "401:10:3"
+              "src": "434:10:3"
             },
             "scope": 907,
-            "src": "331:114:3",
+            "src": "364:114:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -520,7 +520,7 @@
             "body": {
               "id": 736,
               "nodeType": "Block",
-              "src": "531:37:3",
+              "src": "564:37:3",
               "statements": [
                 {
                   "expression": {
@@ -533,7 +533,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 725,
-                        "src": "557:6:3",
+                        "src": "590:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -556,7 +556,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 723,
-                          "src": "542:4:3",
+                          "src": "575:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -570,7 +570,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "542:11:3",
+                        "src": "575:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -584,7 +584,7 @@
                       "memberName": "at",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2221,
-                      "src": "542:14:3",
+                      "src": "575:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_uint256_$returns$_t_bytes4_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,uint256) view returns (bytes4)"
@@ -598,7 +598,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "542:22:3",
+                    "src": "575:22:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
@@ -608,7 +608,7 @@
                   "functionReturnParameters": 729,
                   "id": 735,
                   "nodeType": "Return",
-                  "src": "535:29:3"
+                  "src": "568:29:3"
                 }
               ]
             },
@@ -631,7 +631,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "463:16:3",
+                  "src": "496:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -644,7 +644,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "463:3:3",
+                    "src": "496:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -660,7 +660,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "481:14:3",
+                  "src": "514:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -671,7 +671,7 @@
                     "id": 724,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "481:7:3",
+                    "src": "514:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -681,7 +681,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "462:34:3"
+              "src": "495:34:3"
             },
             "returnParameters": {
               "id": 729,
@@ -694,7 +694,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "521:6:3",
+                  "src": "554:6:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -705,7 +705,7 @@
                     "id": 727,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "521:6:3",
+                    "src": "554:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -715,10 +715,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "520:9:3"
+              "src": "553:9:3"
             },
             "scope": 907,
-            "src": "448:120:3",
+            "src": "481:120:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -727,7 +727,7 @@
             "body": {
               "id": 762,
               "nodeType": "Block",
-              "src": "661:75:3",
+              "src": "694:75:3",
               "statements": [
                 {
                   "assignments": [
@@ -741,7 +741,7 @@
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
                       "scope": 762,
-                      "src": "665:11:3",
+                      "src": "698:11:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -752,7 +752,7 @@
                         "id": 748,
                         "name": "bytes4",
                         "nodeType": "ElementaryTypeName",
-                        "src": "665:6:3",
+                        "src": "698:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -773,7 +773,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 739,
-                        "src": "685:4:3",
+                        "src": "718:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                           "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -786,7 +786,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 741,
-                        "src": "691:6:3",
+                        "src": "724:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -809,7 +809,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 737,
-                      "src": "679:5:3",
+                      "src": "712:5:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_uint256_$returns$_t_bytes4_$",
                         "typeString": "function (struct LibMap_bytes4_address.map storage pointer,uint256) view returns (bytes4)"
@@ -823,7 +823,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "679:19:3",
+                    "src": "712:19:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
@@ -831,7 +831,7 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "665:33:3"
+                  "src": "698:33:3"
                 },
                 {
                   "expression": {
@@ -844,7 +844,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 749,
-                        "src": "710:3:3",
+                        "src": "743:3:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -860,7 +860,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 739,
-                            "src": "721:4:3",
+                            "src": "754:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                               "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -873,7 +873,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 749,
-                            "src": "727:3:3",
+                            "src": "760:3:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes4",
                               "typeString": "bytes4"
@@ -896,7 +896,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 721,
-                          "src": "715:5:3",
+                          "src": "748:5:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_bytes4_$returns$_t_address_$",
                             "typeString": "function (struct LibMap_bytes4_address.map storage pointer,bytes4) view returns (address)"
@@ -910,7 +910,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "715:16:3",
+                        "src": "748:16:3",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -925,7 +925,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "709:23:3",
+                    "src": "742:23:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$_t_bytes4_$_t_address_$",
                       "typeString": "tuple(bytes4,address)"
@@ -934,7 +934,7 @@
                   "functionReturnParameters": 747,
                   "id": 761,
                   "nodeType": "Return",
-                  "src": "702:30:3"
+                  "src": "735:30:3"
                 }
               ]
             },
@@ -957,7 +957,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "583:16:3",
+                  "src": "616:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -970,7 +970,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "583:3:3",
+                    "src": "616:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -986,7 +986,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "601:14:3",
+                  "src": "634:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -997,7 +997,7 @@
                     "id": 740,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "601:7:3",
+                    "src": "634:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1007,7 +1007,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "582:34:3"
+              "src": "615:34:3"
             },
             "returnParameters": {
               "id": 747,
@@ -1020,7 +1020,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "641:6:3",
+                  "src": "674:6:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1031,7 +1031,7 @@
                     "id": 743,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "641:6:3",
+                    "src": "674:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -1047,7 +1047,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "650:7:3",
+                  "src": "683:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1058,7 +1058,7 @@
                     "id": 745,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "650:7:3",
+                    "src": "683:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1069,10 +1069,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "640:19:3"
+              "src": "673:19:3"
             },
             "scope": 907,
-            "src": "571:165:3",
+            "src": "604:165:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -1081,7 +1081,7 @@
             "body": {
               "id": 778,
               "nodeType": "Block",
-              "src": "822:40:3",
+              "src": "855:40:3",
               "statements": [
                 {
                   "expression": {
@@ -1094,7 +1094,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 767,
-                        "src": "853:4:3",
+                        "src": "886:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -1117,7 +1117,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 765,
-                          "src": "833:4:3",
+                          "src": "866:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -1131,7 +1131,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "833:11:3",
+                        "src": "866:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -1145,7 +1145,7 @@
                       "memberName": "indexOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2236,
-                      "src": "833:19:3",
+                      "src": "866:19:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) view returns (uint256)"
@@ -1159,7 +1159,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "833:25:3",
+                    "src": "866:25:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1169,7 +1169,7 @@
                   "functionReturnParameters": 771,
                   "id": 777,
                   "nodeType": "Return",
-                  "src": "826:32:3"
+                  "src": "859:32:3"
                 }
               ]
             },
@@ -1192,7 +1192,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "756:16:3",
+                  "src": "789:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -1205,7 +1205,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "756:3:3",
+                    "src": "789:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -1221,7 +1221,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "774:12:3",
+                  "src": "807:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1232,7 +1232,7 @@
                     "id": 766,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "774:6:3",
+                    "src": "807:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -1242,7 +1242,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "755:32:3"
+              "src": "788:32:3"
             },
             "returnParameters": {
               "id": 771,
@@ -1255,7 +1255,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "812:7:3",
+                  "src": "845:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1266,7 +1266,7 @@
                     "id": 769,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "812:7:3",
+                    "src": "845:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1276,10 +1276,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "811:9:3"
+              "src": "844:9:3"
             },
             "scope": 907,
-            "src": "739:123:3",
+            "src": "772:123:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -1288,7 +1288,7 @@
             "body": {
               "id": 794,
               "nodeType": "Block",
-              "src": "946:41:3",
+              "src": "979:41:3",
               "statements": [
                 {
                   "expression": {
@@ -1301,7 +1301,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 783,
-                        "src": "978:4:3",
+                        "src": "1011:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -1324,7 +1324,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 781,
-                          "src": "957:4:3",
+                          "src": "990:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -1338,7 +1338,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "957:11:3",
+                        "src": "990:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -1352,7 +1352,7 @@
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2253,
-                      "src": "957:20:3",
+                      "src": "990:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) view returns (bool)"
@@ -1366,7 +1366,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "957:26:3",
+                    "src": "990:26:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1376,7 +1376,7 @@
                   "functionReturnParameters": 787,
                   "id": 793,
                   "nodeType": "Return",
-                  "src": "950:33:3"
+                  "src": "983:33:3"
                 }
               ]
             },
@@ -1399,7 +1399,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "883:16:3",
+                  "src": "916:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -1412,7 +1412,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "883:3:3",
+                    "src": "916:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -1428,7 +1428,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "901:12:3",
+                  "src": "934:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1439,7 +1439,7 @@
                     "id": 782,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "901:6:3",
+                    "src": "934:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -1449,7 +1449,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "882:32:3"
+              "src": "915:32:3"
             },
             "returnParameters": {
               "id": 787,
@@ -1462,7 +1462,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "939:4:3",
+                  "src": "972:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1473,7 +1473,7 @@
                     "id": 785,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "939:4:3",
+                    "src": "972:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1483,10 +1483,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "938:6:3"
+              "src": "971:6:3"
             },
             "scope": 907,
-            "src": "865:122:3",
+            "src": "898:122:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -1495,7 +1495,7 @@
             "body": {
               "id": 808,
               "nodeType": "Block",
-              "src": "1064:36:3",
+              "src": "1097:36:3",
               "statements": [
                 {
                   "expression": {
@@ -1512,7 +1512,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 797,
-                          "src": "1075:4:3",
+                          "src": "1108:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -1526,7 +1526,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1075:11:3",
+                        "src": "1108:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -1540,7 +1540,7 @@
                       "memberName": "content",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2265,
-                      "src": "1075:19:3",
+                      "src": "1108:19:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_array$_t_bytes4_$dyn_memory_ptr_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (bytes4[] memory)"
@@ -1554,7 +1554,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1075:21:3",
+                    "src": "1108:21:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes4_$dyn_memory_ptr",
@@ -1564,7 +1564,7 @@
                   "functionReturnParameters": 802,
                   "id": 807,
                   "nodeType": "Return",
-                  "src": "1068:28:3"
+                  "src": "1101:28:3"
                 }
               ]
             },
@@ -1587,7 +1587,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 809,
-                  "src": "1004:16:3",
+                  "src": "1037:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -1600,7 +1600,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1004:3:3",
+                    "src": "1037:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -1610,7 +1610,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1003:18:3"
+              "src": "1036:18:3"
             },
             "returnParameters": {
               "id": 802,
@@ -1623,7 +1623,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 809,
-                  "src": "1046:15:3",
+                  "src": "1079:15:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1635,7 +1635,7 @@
                       "id": 799,
                       "name": "bytes4",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1046:6:3",
+                      "src": "1079:6:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
@@ -1644,7 +1644,7 @@
                     "id": 800,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "1046:8:3",
+                    "src": "1079:8:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes4_$dyn_storage_ptr",
                       "typeString": "bytes4[]"
@@ -1654,10 +1654,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1045:17:3"
+              "src": "1078:17:3"
             },
             "scope": 907,
-            "src": "990:110:3",
+            "src": "1023:110:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -1666,7 +1666,7 @@
             "body": {
               "id": 838,
               "nodeType": "Block",
-              "src": "1191:74:3",
+              "src": "1224:74:3",
               "statements": [
                 {
                   "expression": {
@@ -1679,7 +1679,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 813,
-                        "src": "1211:4:3",
+                        "src": "1244:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -1702,7 +1702,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 811,
-                          "src": "1195:4:3",
+                          "src": "1228:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -1716,7 +1716,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1195:11:3",
+                        "src": "1228:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -1730,7 +1730,7 @@
                       "memberName": "add",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2303,
-                      "src": "1195:15:3",
+                      "src": "1228:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) returns (bool)"
@@ -1744,7 +1744,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1195:21:3",
+                    "src": "1228:21:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1753,7 +1753,7 @@
                   },
                   "id": 827,
                   "nodeType": "ExpressionStatement",
-                  "src": "1195:21:3"
+                  "src": "1228:21:3"
                 },
                 {
                   "expression": {
@@ -1774,7 +1774,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 811,
-                          "src": "1220:4:3",
+                          "src": "1253:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -1788,7 +1788,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 692,
-                        "src": "1220:11:3",
+                        "src": "1253:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                           "typeString": "mapping(bytes4 => address)"
@@ -1802,7 +1802,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 813,
-                        "src": "1232:4:3",
+                        "src": "1265:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -1813,7 +1813,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1220:17:3",
+                      "src": "1253:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1828,13 +1828,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 815,
-                      "src": "1240:6:3",
+                      "src": "1273:6:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "1220:26:3",
+                    "src": "1253:26:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1842,7 +1842,7 @@
                   },
                   "id": 835,
                   "nodeType": "ExpressionStatement",
-                  "src": "1220:26:3"
+                  "src": "1253:26:3"
                 },
                 {
                   "expression": {
@@ -1855,7 +1855,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1257:4:3",
+                    "src": "1290:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -1866,7 +1866,7 @@
                   "functionReturnParameters": 819,
                   "id": 837,
                   "nodeType": "Return",
-                  "src": "1250:11:3"
+                  "src": "1283:11:3"
                 }
               ]
             },
@@ -1889,7 +1889,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1116:16:3",
+                  "src": "1149:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -1902,7 +1902,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1116:3:3",
+                    "src": "1149:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -1918,7 +1918,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1134:12:3",
+                  "src": "1167:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1929,7 +1929,7 @@
                     "id": 812,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1134:6:3",
+                    "src": "1167:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -1945,7 +1945,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1148:15:3",
+                  "src": "1181:15:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1956,7 +1956,7 @@
                     "id": 814,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1148:7:3",
+                    "src": "1181:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1967,7 +1967,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1115:49:3"
+              "src": "1148:49:3"
             },
             "returnParameters": {
               "id": 819,
@@ -1980,7 +1980,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1184:4:3",
+                  "src": "1217:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1991,7 +1991,7 @@
                     "id": 817,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1184:4:3",
+                    "src": "1217:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2001,10 +2001,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1183:6:3"
+              "src": "1216:6:3"
             },
             "scope": 907,
-            "src": "1103:162:3",
+            "src": "1136:162:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
@@ -2013,7 +2013,7 @@
             "body": {
               "id": 864,
               "nodeType": "Block",
-              "src": "1339:75:3",
+              "src": "1372:75:3",
               "statements": [
                 {
                   "expression": {
@@ -2026,7 +2026,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 843,
-                        "src": "1362:4:3",
+                        "src": "1395:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -2049,7 +2049,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 841,
-                          "src": "1343:4:3",
+                          "src": "1376:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2063,7 +2063,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1343:11:3",
+                        "src": "1376:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -2077,7 +2077,7 @@
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2382,
-                      "src": "1343:18:3",
+                      "src": "1376:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) returns (bool)"
@@ -2091,7 +2091,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1343:24:3",
+                    "src": "1376:24:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2100,7 +2100,7 @@
                   },
                   "id": 855,
                   "nodeType": "ExpressionStatement",
-                  "src": "1343:24:3"
+                  "src": "1376:24:3"
                 },
                 {
                   "expression": {
@@ -2113,7 +2113,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1371:24:3",
+                    "src": "1404:24:3",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
@@ -2125,7 +2125,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 841,
-                          "src": "1378:4:3",
+                          "src": "1411:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2139,7 +2139,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 692,
-                        "src": "1378:11:3",
+                        "src": "1411:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                           "typeString": "mapping(bytes4 => address)"
@@ -2153,7 +2153,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 843,
-                        "src": "1390:4:3",
+                        "src": "1423:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -2164,7 +2164,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1378:17:3",
+                      "src": "1411:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -2177,7 +2177,7 @@
                   },
                   "id": 861,
                   "nodeType": "ExpressionStatement",
-                  "src": "1371:24:3"
+                  "src": "1404:24:3"
                 },
                 {
                   "expression": {
@@ -2190,7 +2190,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1406:4:3",
+                    "src": "1439:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2201,7 +2201,7 @@
                   "functionReturnParameters": 847,
                   "id": 863,
                   "nodeType": "Return",
-                  "src": "1399:11:3"
+                  "src": "1432:11:3"
                 }
               ]
             },
@@ -2224,7 +2224,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1281:16:3",
+                  "src": "1314:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -2237,7 +2237,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1281:3:3",
+                    "src": "1314:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -2253,7 +2253,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1299:12:3",
+                  "src": "1332:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2264,7 +2264,7 @@
                     "id": 842,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1299:6:3",
+                    "src": "1332:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -2274,7 +2274,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1280:32:3"
+              "src": "1313:32:3"
             },
             "returnParameters": {
               "id": 847,
@@ -2287,7 +2287,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1332:4:3",
+                  "src": "1365:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2298,7 +2298,7 @@
                     "id": 845,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1332:4:3",
+                    "src": "1365:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2308,10 +2308,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1331:6:3"
+              "src": "1364:6:3"
             },
             "scope": 907,
-            "src": "1268:146:3",
+            "src": "1301:146:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
@@ -2320,13 +2320,13 @@
             "body": {
               "id": 905,
               "nodeType": "Block",
-              "src": "1476:142:3",
+              "src": "1509:142:3",
               "statements": [
                 {
                   "body": {
                     "id": 894,
                     "nodeType": "Block",
-                    "src": "1533:44:3",
+                    "src": "1566:44:3",
                     "statements": [
                       {
                         "expression": {
@@ -2339,7 +2339,7 @@
                           "nodeType": "UnaryOperation",
                           "operator": "delete",
                           "prefix": true,
-                          "src": "1538:34:3",
+                          "src": "1571:34:3",
                           "subExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
@@ -2351,7 +2351,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 867,
-                                "src": "1545:4:3",
+                                "src": "1578:4:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                                   "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2365,7 +2365,7 @@
                               "memberName": "values",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 692,
-                              "src": "1545:11:3",
+                              "src": "1578:11:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                                 "typeString": "mapping(bytes4 => address)"
@@ -2382,7 +2382,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 867,
-                                  "src": "1563:4:3",
+                                  "src": "1596:4:3",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                                     "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2395,7 +2395,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 873,
-                                  "src": "1569:1:3",
+                                  "src": "1602:1:3",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
@@ -2418,7 +2418,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 737,
-                                "src": "1557:5:3",
+                                "src": "1590:5:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_uint256_$returns$_t_bytes4_$",
                                   "typeString": "function (struct LibMap_bytes4_address.map storage pointer,uint256) view returns (bytes4)"
@@ -2432,7 +2432,7 @@
                               "lValueRequested": false,
                               "names": [],
                               "nodeType": "FunctionCall",
-                              "src": "1557:14:3",
+                              "src": "1590:14:3",
                               "tryCall": false,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bytes4",
@@ -2444,7 +2444,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1545:27:3",
+                            "src": "1578:27:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -2457,7 +2457,7 @@
                         },
                         "id": 893,
                         "nodeType": "ExpressionStatement",
-                        "src": "1538:34:3"
+                        "src": "1571:34:3"
                       }
                     ]
                   },
@@ -2479,7 +2479,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 873,
-                      "src": "1519:1:3",
+                      "src": "1552:1:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2497,7 +2497,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1523:1:3",
+                      "src": "1556:1:3",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -2505,7 +2505,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "1519:5:3",
+                    "src": "1552:5:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2524,7 +2524,7 @@
                         "nodeType": "VariableDeclaration",
                         "overrides": null,
                         "scope": 895,
-                        "src": "1485:9:3",
+                        "src": "1518:9:3",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -2535,7 +2535,7 @@
                           "id": 872,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1485:7:3",
+                          "src": "1518:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2560,7 +2560,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 867,
-                            "src": "1497:4:3",
+                            "src": "1530:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                               "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2574,7 +2574,7 @@
                           "memberName": "keyset",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 688,
-                          "src": "1497:11:3",
+                          "src": "1530:11:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$2192_storage",
                             "typeString": "struct LibSet_bytes4.set storage ref"
@@ -2588,7 +2588,7 @@
                         "memberName": "length",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 2204,
-                        "src": "1497:18:3",
+                        "src": "1530:18:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                           "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (uint256)"
@@ -2602,7 +2602,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1497:20:3",
+                      "src": "1530:20:3",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -2610,7 +2610,7 @@
                       }
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "1485:32:3"
+                    "src": "1518:32:3"
                   },
                   "loopExpression": {
                     "expression": {
@@ -2623,7 +2623,7 @@
                       "nodeType": "UnaryOperation",
                       "operator": "--",
                       "prefix": true,
-                      "src": "1526:3:3",
+                      "src": "1559:3:3",
                       "subExpression": {
                         "argumentTypes": null,
                         "id": 882,
@@ -2631,7 +2631,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 873,
-                        "src": "1528:1:3",
+                        "src": "1561:1:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2644,10 +2644,10 @@
                     },
                     "id": 884,
                     "nodeType": "ExpressionStatement",
-                    "src": "1526:3:3"
+                    "src": "1559:3:3"
                   },
                   "nodeType": "ForStatement",
-                  "src": "1480:97:3"
+                  "src": "1513:97:3"
                 },
                 {
                   "expression": {
@@ -2664,7 +2664,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 867,
-                          "src": "1580:4:3",
+                          "src": "1613:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -2678,7 +2678,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1580:11:3",
+                        "src": "1613:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -2692,7 +2692,7 @@
                       "memberName": "clear",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2427,
-                      "src": "1580:17:3",
+                      "src": "1613:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) returns (bool)"
@@ -2706,7 +2706,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1580:19:3",
+                    "src": "1613:19:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2715,7 +2715,7 @@
                   },
                   "id": 902,
                   "nodeType": "ExpressionStatement",
-                  "src": "1580:19:3"
+                  "src": "1613:19:3"
                 },
                 {
                   "expression": {
@@ -2728,7 +2728,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1610:4:3",
+                    "src": "1643:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2739,7 +2739,7 @@
                   "functionReturnParameters": 871,
                   "id": 904,
                   "nodeType": "Return",
-                  "src": "1603:11:3"
+                  "src": "1636:11:3"
                 }
               ]
             },
@@ -2762,7 +2762,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 906,
-                  "src": "1432:16:3",
+                  "src": "1465:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -2775,7 +2775,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1432:3:3",
+                    "src": "1465:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -2785,7 +2785,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1431:18:3"
+              "src": "1464:18:3"
             },
             "returnParameters": {
               "id": 871,
@@ -2798,7 +2798,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 906,
-                  "src": "1469:4:3",
+                  "src": "1502:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2809,7 +2809,7 @@
                     "id": 869,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1469:4:3",
+                    "src": "1502:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2819,20 +2819,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1468:6:3"
+              "src": "1501:6:3"
             },
             "scope": 907,
-            "src": "1417:201:3",
+            "src": "1450:201:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
         "scope": 908,
-        "src": "63:1557:3"
+        "src": "96:1557:3"
       }
     ],
-    "src": "0:1621:3"
+    "src": "33:1621:3"
   },
   "legacyAST": {
     "absolutePath": "/home/amxx/Work/Projects/SolStruct/contracts/libs/LibMap.bytes4.address.sol",
@@ -2852,11 +2852,11 @@
           "0.5",
           ".0",
           "<",
-          "0.7",
+          "0.8",
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:30:3"
+        "src": "33:30:3"
       },
       {
         "absolutePath": "/home/amxx/Work/Projects/SolStruct/contracts/libs/LibSet.bytes4.sol",
@@ -2865,7 +2865,7 @@
         "nodeType": "ImportDirective",
         "scope": 908,
         "sourceUnit": 2429,
-        "src": "32:29:3",
+        "src": "65:29:3",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -2891,21 +2891,21 @@
               "name": "LibSet_bytes4",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2428,
-              "src": "102:13:3",
+              "src": "135:13:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_LibSet_bytes4_$2428",
                 "typeString": "library LibSet_bytes4"
               }
             },
             "nodeType": "UsingForDirective",
-            "src": "96:42:3",
+            "src": "129:42:3",
             "typeName": {
               "contractScope": null,
               "id": 685,
               "name": "LibSet_bytes4.set",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2192,
-              "src": "120:17:3",
+              "src": "153:17:3",
               "typeDescriptions": {
                 "typeIdentifier": "t_struct$_set_$2192_storage_ptr",
                 "typeString": "struct LibSet_bytes4.set"
@@ -2923,7 +2923,7 @@
                 "nodeType": "VariableDeclaration",
                 "overrides": null,
                 "scope": 693,
-                "src": "157:24:3",
+                "src": "190:24:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -2936,7 +2936,7 @@
                   "name": "LibSet_bytes4.set",
                   "nodeType": "UserDefinedTypeName",
                   "referencedDeclaration": 2192,
-                  "src": "157:17:3",
+                  "src": "190:17:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_struct$_set_$2192_storage_ptr",
                     "typeString": "struct LibSet_bytes4.set"
@@ -2952,7 +2952,7 @@
                 "nodeType": "VariableDeclaration",
                 "overrides": null,
                 "scope": 693,
-                "src": "185:33:3",
+                "src": "218:33:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -2965,14 +2965,14 @@
                     "id": 689,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "193:6:3",
+                    "src": "226:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "185:26:3",
+                  "src": "218:26:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                     "typeString": "mapping(bytes4 => address)"
@@ -2981,7 +2981,7 @@
                     "id": 690,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "203:7:3",
+                    "src": "236:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2996,14 +2996,14 @@
             "name": "map",
             "nodeType": "StructDefinition",
             "scope": 907,
-            "src": "141:81:3",
+            "src": "174:81:3",
             "visibility": "public"
           },
           {
             "body": {
               "id": 705,
               "nodeType": "Block",
-              "src": "293:35:3",
+              "src": "326:35:3",
               "statements": [
                 {
                   "expression": {
@@ -3020,7 +3020,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 695,
-                          "src": "304:4:3",
+                          "src": "337:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3034,7 +3034,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "304:11:3",
+                        "src": "337:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -3048,7 +3048,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2204,
-                      "src": "304:18:3",
+                      "src": "337:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (uint256)"
@@ -3062,7 +3062,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "304:20:3",
+                    "src": "337:20:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -3072,7 +3072,7 @@
                   "functionReturnParameters": 699,
                   "id": 704,
                   "nodeType": "Return",
-                  "src": "297:27:3"
+                  "src": "330:27:3"
                 }
               ]
             },
@@ -3095,7 +3095,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 706,
-                  "src": "241:16:3",
+                  "src": "274:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3108,7 +3108,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "241:3:3",
+                    "src": "274:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -3118,7 +3118,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "240:18:3"
+              "src": "273:18:3"
             },
             "returnParameters": {
               "id": 699,
@@ -3131,7 +3131,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 706,
-                  "src": "283:7:3",
+                  "src": "316:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3142,7 +3142,7 @@
                     "id": 697,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "283:7:3",
+                    "src": "316:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3152,10 +3152,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "282:9:3"
+              "src": "315:9:3"
             },
             "scope": 907,
-            "src": "225:103:3",
+            "src": "258:103:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -3164,7 +3164,7 @@
             "body": {
               "id": 720,
               "nodeType": "Block",
-              "src": "413:32:3",
+              "src": "446:32:3",
               "statements": [
                 {
                   "expression": {
@@ -3178,7 +3178,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 708,
-                        "src": "424:4:3",
+                        "src": "457:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                           "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3192,7 +3192,7 @@
                       "memberName": "values",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 692,
-                      "src": "424:11:3",
+                      "src": "457:11:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                         "typeString": "mapping(bytes4 => address)"
@@ -3206,7 +3206,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 710,
-                      "src": "436:4:3",
+                      "src": "469:4:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
@@ -3217,7 +3217,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "424:17:3",
+                    "src": "457:17:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -3226,7 +3226,7 @@
                   "functionReturnParameters": 714,
                   "id": 719,
                   "nodeType": "Return",
-                  "src": "417:24:3"
+                  "src": "450:24:3"
                 }
               ]
             },
@@ -3249,7 +3249,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "346:16:3",
+                  "src": "379:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3262,7 +3262,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "346:3:3",
+                    "src": "379:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -3278,7 +3278,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "364:12:3",
+                  "src": "397:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3289,7 +3289,7 @@
                     "id": 709,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "364:6:3",
+                    "src": "397:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -3299,7 +3299,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "345:32:3"
+              "src": "378:32:3"
             },
             "returnParameters": {
               "id": 714,
@@ -3312,7 +3312,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 721,
-                  "src": "402:7:3",
+                  "src": "435:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3323,7 +3323,7 @@
                     "id": 712,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "402:7:3",
+                    "src": "435:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3334,10 +3334,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "401:10:3"
+              "src": "434:10:3"
             },
             "scope": 907,
-            "src": "331:114:3",
+            "src": "364:114:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -3346,7 +3346,7 @@
             "body": {
               "id": 736,
               "nodeType": "Block",
-              "src": "531:37:3",
+              "src": "564:37:3",
               "statements": [
                 {
                   "expression": {
@@ -3359,7 +3359,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 725,
-                        "src": "557:6:3",
+                        "src": "590:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3382,7 +3382,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 723,
-                          "src": "542:4:3",
+                          "src": "575:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3396,7 +3396,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "542:11:3",
+                        "src": "575:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -3410,7 +3410,7 @@
                       "memberName": "at",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2221,
-                      "src": "542:14:3",
+                      "src": "575:14:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_uint256_$returns$_t_bytes4_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,uint256) view returns (bytes4)"
@@ -3424,7 +3424,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "542:22:3",
+                    "src": "575:22:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
@@ -3434,7 +3434,7 @@
                   "functionReturnParameters": 729,
                   "id": 735,
                   "nodeType": "Return",
-                  "src": "535:29:3"
+                  "src": "568:29:3"
                 }
               ]
             },
@@ -3457,7 +3457,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "463:16:3",
+                  "src": "496:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3470,7 +3470,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "463:3:3",
+                    "src": "496:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -3486,7 +3486,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "481:14:3",
+                  "src": "514:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3497,7 +3497,7 @@
                     "id": 724,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "481:7:3",
+                    "src": "514:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3507,7 +3507,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "462:34:3"
+              "src": "495:34:3"
             },
             "returnParameters": {
               "id": 729,
@@ -3520,7 +3520,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 737,
-                  "src": "521:6:3",
+                  "src": "554:6:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3531,7 +3531,7 @@
                     "id": 727,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "521:6:3",
+                    "src": "554:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -3541,10 +3541,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "520:9:3"
+              "src": "553:9:3"
             },
             "scope": 907,
-            "src": "448:120:3",
+            "src": "481:120:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -3553,7 +3553,7 @@
             "body": {
               "id": 762,
               "nodeType": "Block",
-              "src": "661:75:3",
+              "src": "694:75:3",
               "statements": [
                 {
                   "assignments": [
@@ -3567,7 +3567,7 @@
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
                       "scope": 762,
-                      "src": "665:11:3",
+                      "src": "698:11:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -3578,7 +3578,7 @@
                         "id": 748,
                         "name": "bytes4",
                         "nodeType": "ElementaryTypeName",
-                        "src": "665:6:3",
+                        "src": "698:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -3599,7 +3599,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 739,
-                        "src": "685:4:3",
+                        "src": "718:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                           "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3612,7 +3612,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 741,
-                        "src": "691:6:3",
+                        "src": "724:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3635,7 +3635,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 737,
-                      "src": "679:5:3",
+                      "src": "712:5:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_uint256_$returns$_t_bytes4_$",
                         "typeString": "function (struct LibMap_bytes4_address.map storage pointer,uint256) view returns (bytes4)"
@@ -3649,7 +3649,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "679:19:3",
+                    "src": "712:19:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
@@ -3657,7 +3657,7 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "665:33:3"
+                  "src": "698:33:3"
                 },
                 {
                   "expression": {
@@ -3670,7 +3670,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 749,
-                        "src": "710:3:3",
+                        "src": "743:3:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -3686,7 +3686,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 739,
-                            "src": "721:4:3",
+                            "src": "754:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                               "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3699,7 +3699,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 749,
-                            "src": "727:3:3",
+                            "src": "760:3:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes4",
                               "typeString": "bytes4"
@@ -3722,7 +3722,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 721,
-                          "src": "715:5:3",
+                          "src": "748:5:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_bytes4_$returns$_t_address_$",
                             "typeString": "function (struct LibMap_bytes4_address.map storage pointer,bytes4) view returns (address)"
@@ -3736,7 +3736,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "715:16:3",
+                        "src": "748:16:3",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3751,7 +3751,7 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "709:23:3",
+                    "src": "742:23:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$_t_bytes4_$_t_address_$",
                       "typeString": "tuple(bytes4,address)"
@@ -3760,7 +3760,7 @@
                   "functionReturnParameters": 747,
                   "id": 761,
                   "nodeType": "Return",
-                  "src": "702:30:3"
+                  "src": "735:30:3"
                 }
               ]
             },
@@ -3783,7 +3783,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "583:16:3",
+                  "src": "616:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -3796,7 +3796,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "583:3:3",
+                    "src": "616:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -3812,7 +3812,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "601:14:3",
+                  "src": "634:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3823,7 +3823,7 @@
                     "id": 740,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "601:7:3",
+                    "src": "634:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3833,7 +3833,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "582:34:3"
+              "src": "615:34:3"
             },
             "returnParameters": {
               "id": 747,
@@ -3846,7 +3846,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "641:6:3",
+                  "src": "674:6:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3857,7 +3857,7 @@
                     "id": 743,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "641:6:3",
+                    "src": "674:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -3873,7 +3873,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 763,
-                  "src": "650:7:3",
+                  "src": "683:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3884,7 +3884,7 @@
                     "id": 745,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "650:7:3",
+                    "src": "683:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3895,10 +3895,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "640:19:3"
+              "src": "673:19:3"
             },
             "scope": 907,
-            "src": "571:165:3",
+            "src": "604:165:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -3907,7 +3907,7 @@
             "body": {
               "id": 778,
               "nodeType": "Block",
-              "src": "822:40:3",
+              "src": "855:40:3",
               "statements": [
                 {
                   "expression": {
@@ -3920,7 +3920,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 767,
-                        "src": "853:4:3",
+                        "src": "886:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -3943,7 +3943,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 765,
-                          "src": "833:4:3",
+                          "src": "866:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -3957,7 +3957,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "833:11:3",
+                        "src": "866:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -3971,7 +3971,7 @@
                       "memberName": "indexOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2236,
-                      "src": "833:19:3",
+                      "src": "866:19:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) view returns (uint256)"
@@ -3985,7 +3985,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "833:25:3",
+                    "src": "866:25:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -3995,7 +3995,7 @@
                   "functionReturnParameters": 771,
                   "id": 777,
                   "nodeType": "Return",
-                  "src": "826:32:3"
+                  "src": "859:32:3"
                 }
               ]
             },
@@ -4018,7 +4018,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "756:16:3",
+                  "src": "789:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -4031,7 +4031,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "756:3:3",
+                    "src": "789:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -4047,7 +4047,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "774:12:3",
+                  "src": "807:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4058,7 +4058,7 @@
                     "id": 766,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "774:6:3",
+                    "src": "807:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -4068,7 +4068,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "755:32:3"
+              "src": "788:32:3"
             },
             "returnParameters": {
               "id": 771,
@@ -4081,7 +4081,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 779,
-                  "src": "812:7:3",
+                  "src": "845:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4092,7 +4092,7 @@
                     "id": 769,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "812:7:3",
+                    "src": "845:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4102,10 +4102,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "811:9:3"
+              "src": "844:9:3"
             },
             "scope": 907,
-            "src": "739:123:3",
+            "src": "772:123:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -4114,7 +4114,7 @@
             "body": {
               "id": 794,
               "nodeType": "Block",
-              "src": "946:41:3",
+              "src": "979:41:3",
               "statements": [
                 {
                   "expression": {
@@ -4127,7 +4127,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 783,
-                        "src": "978:4:3",
+                        "src": "1011:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -4150,7 +4150,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 781,
-                          "src": "957:4:3",
+                          "src": "990:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4164,7 +4164,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "957:11:3",
+                        "src": "990:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -4178,7 +4178,7 @@
                       "memberName": "contains",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2253,
-                      "src": "957:20:3",
+                      "src": "990:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) view returns (bool)"
@@ -4192,7 +4192,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "957:26:3",
+                    "src": "990:26:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -4202,7 +4202,7 @@
                   "functionReturnParameters": 787,
                   "id": 793,
                   "nodeType": "Return",
-                  "src": "950:33:3"
+                  "src": "983:33:3"
                 }
               ]
             },
@@ -4225,7 +4225,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "883:16:3",
+                  "src": "916:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -4238,7 +4238,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "883:3:3",
+                    "src": "916:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -4254,7 +4254,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "901:12:3",
+                  "src": "934:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4265,7 +4265,7 @@
                     "id": 782,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "901:6:3",
+                    "src": "934:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -4275,7 +4275,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "882:32:3"
+              "src": "915:32:3"
             },
             "returnParameters": {
               "id": 787,
@@ -4288,7 +4288,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 795,
-                  "src": "939:4:3",
+                  "src": "972:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4299,7 +4299,7 @@
                     "id": 785,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "939:4:3",
+                    "src": "972:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -4309,10 +4309,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "938:6:3"
+              "src": "971:6:3"
             },
             "scope": 907,
-            "src": "865:122:3",
+            "src": "898:122:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -4321,7 +4321,7 @@
             "body": {
               "id": 808,
               "nodeType": "Block",
-              "src": "1064:36:3",
+              "src": "1097:36:3",
               "statements": [
                 {
                   "expression": {
@@ -4338,7 +4338,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 797,
-                          "src": "1075:4:3",
+                          "src": "1108:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4352,7 +4352,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1075:11:3",
+                        "src": "1108:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -4366,7 +4366,7 @@
                       "memberName": "content",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2265,
-                      "src": "1075:19:3",
+                      "src": "1108:19:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_array$_t_bytes4_$dyn_memory_ptr_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (bytes4[] memory)"
@@ -4380,7 +4380,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1075:21:3",
+                    "src": "1108:21:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes4_$dyn_memory_ptr",
@@ -4390,7 +4390,7 @@
                   "functionReturnParameters": 802,
                   "id": 807,
                   "nodeType": "Return",
-                  "src": "1068:28:3"
+                  "src": "1101:28:3"
                 }
               ]
             },
@@ -4413,7 +4413,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 809,
-                  "src": "1004:16:3",
+                  "src": "1037:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -4426,7 +4426,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1004:3:3",
+                    "src": "1037:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -4436,7 +4436,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1003:18:3"
+              "src": "1036:18:3"
             },
             "returnParameters": {
               "id": 802,
@@ -4449,7 +4449,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 809,
-                  "src": "1046:15:3",
+                  "src": "1079:15:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -4461,7 +4461,7 @@
                       "id": 799,
                       "name": "bytes4",
                       "nodeType": "ElementaryTypeName",
-                      "src": "1046:6:3",
+                      "src": "1079:6:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes4",
                         "typeString": "bytes4"
@@ -4470,7 +4470,7 @@
                     "id": 800,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "1046:8:3",
+                    "src": "1079:8:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes4_$dyn_storage_ptr",
                       "typeString": "bytes4[]"
@@ -4480,10 +4480,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1045:17:3"
+              "src": "1078:17:3"
             },
             "scope": 907,
-            "src": "990:110:3",
+            "src": "1023:110:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "internal"
@@ -4492,7 +4492,7 @@
             "body": {
               "id": 838,
               "nodeType": "Block",
-              "src": "1191:74:3",
+              "src": "1224:74:3",
               "statements": [
                 {
                   "expression": {
@@ -4505,7 +4505,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 813,
-                        "src": "1211:4:3",
+                        "src": "1244:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -4528,7 +4528,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 811,
-                          "src": "1195:4:3",
+                          "src": "1228:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4542,7 +4542,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1195:11:3",
+                        "src": "1228:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -4556,7 +4556,7 @@
                       "memberName": "add",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2303,
-                      "src": "1195:15:3",
+                      "src": "1228:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) returns (bool)"
@@ -4570,7 +4570,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1195:21:3",
+                    "src": "1228:21:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -4579,7 +4579,7 @@
                   },
                   "id": 827,
                   "nodeType": "ExpressionStatement",
-                  "src": "1195:21:3"
+                  "src": "1228:21:3"
                 },
                 {
                   "expression": {
@@ -4600,7 +4600,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 811,
-                          "src": "1220:4:3",
+                          "src": "1253:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4614,7 +4614,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 692,
-                        "src": "1220:11:3",
+                        "src": "1253:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                           "typeString": "mapping(bytes4 => address)"
@@ -4628,7 +4628,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 813,
-                        "src": "1232:4:3",
+                        "src": "1265:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -4639,7 +4639,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1220:17:3",
+                      "src": "1253:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -4654,13 +4654,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 815,
-                      "src": "1240:6:3",
+                      "src": "1273:6:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "1220:26:3",
+                    "src": "1253:26:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -4668,7 +4668,7 @@
                   },
                   "id": 835,
                   "nodeType": "ExpressionStatement",
-                  "src": "1220:26:3"
+                  "src": "1253:26:3"
                 },
                 {
                   "expression": {
@@ -4681,7 +4681,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1257:4:3",
+                    "src": "1290:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -4692,7 +4692,7 @@
                   "functionReturnParameters": 819,
                   "id": 837,
                   "nodeType": "Return",
-                  "src": "1250:11:3"
+                  "src": "1283:11:3"
                 }
               ]
             },
@@ -4715,7 +4715,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1116:16:3",
+                  "src": "1149:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -4728,7 +4728,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1116:3:3",
+                    "src": "1149:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -4744,7 +4744,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1134:12:3",
+                  "src": "1167:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4755,7 +4755,7 @@
                     "id": 812,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1134:6:3",
+                    "src": "1167:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -4771,7 +4771,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1148:15:3",
+                  "src": "1181:15:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4782,7 +4782,7 @@
                     "id": 814,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1148:7:3",
+                    "src": "1181:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -4793,7 +4793,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1115:49:3"
+              "src": "1148:49:3"
             },
             "returnParameters": {
               "id": 819,
@@ -4806,7 +4806,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 839,
-                  "src": "1184:4:3",
+                  "src": "1217:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4817,7 +4817,7 @@
                     "id": 817,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1184:4:3",
+                    "src": "1217:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -4827,10 +4827,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1183:6:3"
+              "src": "1216:6:3"
             },
             "scope": 907,
-            "src": "1103:162:3",
+            "src": "1136:162:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
@@ -4839,7 +4839,7 @@
             "body": {
               "id": 864,
               "nodeType": "Block",
-              "src": "1339:75:3",
+              "src": "1372:75:3",
               "statements": [
                 {
                   "expression": {
@@ -4852,7 +4852,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 843,
-                        "src": "1362:4:3",
+                        "src": "1395:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -4875,7 +4875,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 841,
-                          "src": "1343:4:3",
+                          "src": "1376:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4889,7 +4889,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1343:11:3",
+                        "src": "1376:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -4903,7 +4903,7 @@
                       "memberName": "remove",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2382,
-                      "src": "1343:18:3",
+                      "src": "1376:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$_t_bytes4_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer,bytes4) returns (bool)"
@@ -4917,7 +4917,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1343:24:3",
+                    "src": "1376:24:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -4926,7 +4926,7 @@
                   },
                   "id": 855,
                   "nodeType": "ExpressionStatement",
-                  "src": "1343:24:3"
+                  "src": "1376:24:3"
                 },
                 {
                   "expression": {
@@ -4939,7 +4939,7 @@
                     "nodeType": "UnaryOperation",
                     "operator": "delete",
                     "prefix": true,
-                    "src": "1371:24:3",
+                    "src": "1404:24:3",
                     "subExpression": {
                       "argumentTypes": null,
                       "baseExpression": {
@@ -4951,7 +4951,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 841,
-                          "src": "1378:4:3",
+                          "src": "1411:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -4965,7 +4965,7 @@
                         "memberName": "values",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 692,
-                        "src": "1378:11:3",
+                        "src": "1411:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                           "typeString": "mapping(bytes4 => address)"
@@ -4979,7 +4979,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 843,
-                        "src": "1390:4:3",
+                        "src": "1423:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes4",
                           "typeString": "bytes4"
@@ -4990,7 +4990,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1378:17:3",
+                      "src": "1411:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -5003,7 +5003,7 @@
                   },
                   "id": 861,
                   "nodeType": "ExpressionStatement",
-                  "src": "1371:24:3"
+                  "src": "1404:24:3"
                 },
                 {
                   "expression": {
@@ -5016,7 +5016,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1406:4:3",
+                    "src": "1439:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -5027,7 +5027,7 @@
                   "functionReturnParameters": 847,
                   "id": 863,
                   "nodeType": "Return",
-                  "src": "1399:11:3"
+                  "src": "1432:11:3"
                 }
               ]
             },
@@ -5050,7 +5050,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1281:16:3",
+                  "src": "1314:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -5063,7 +5063,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1281:3:3",
+                    "src": "1314:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -5079,7 +5079,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1299:12:3",
+                  "src": "1332:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5090,7 +5090,7 @@
                     "id": 842,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1299:6:3",
+                    "src": "1332:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -5100,7 +5100,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1280:32:3"
+              "src": "1313:32:3"
             },
             "returnParameters": {
               "id": 847,
@@ -5113,7 +5113,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 865,
-                  "src": "1332:4:3",
+                  "src": "1365:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5124,7 +5124,7 @@
                     "id": 845,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1332:4:3",
+                    "src": "1365:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5134,10 +5134,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1331:6:3"
+              "src": "1364:6:3"
             },
             "scope": 907,
-            "src": "1268:146:3",
+            "src": "1301:146:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
@@ -5146,13 +5146,13 @@
             "body": {
               "id": 905,
               "nodeType": "Block",
-              "src": "1476:142:3",
+              "src": "1509:142:3",
               "statements": [
                 {
                   "body": {
                     "id": 894,
                     "nodeType": "Block",
-                    "src": "1533:44:3",
+                    "src": "1566:44:3",
                     "statements": [
                       {
                         "expression": {
@@ -5165,7 +5165,7 @@
                           "nodeType": "UnaryOperation",
                           "operator": "delete",
                           "prefix": true,
-                          "src": "1538:34:3",
+                          "src": "1571:34:3",
                           "subExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
@@ -5177,7 +5177,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 867,
-                                "src": "1545:4:3",
+                                "src": "1578:4:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                                   "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -5191,7 +5191,7 @@
                               "memberName": "values",
                               "nodeType": "MemberAccess",
                               "referencedDeclaration": 692,
-                              "src": "1545:11:3",
+                              "src": "1578:11:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                                 "typeString": "mapping(bytes4 => address)"
@@ -5208,7 +5208,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 867,
-                                  "src": "1563:4:3",
+                                  "src": "1596:4:3",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                                     "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -5221,7 +5221,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 873,
-                                  "src": "1569:1:3",
+                                  "src": "1602:1:3",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
@@ -5244,7 +5244,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 737,
-                                "src": "1557:5:3",
+                                "src": "1590:5:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_view$_t_struct$_map_$693_storage_ptr_$_t_uint256_$returns$_t_bytes4_$",
                                   "typeString": "function (struct LibMap_bytes4_address.map storage pointer,uint256) view returns (bytes4)"
@@ -5258,7 +5258,7 @@
                               "lValueRequested": false,
                               "names": [],
                               "nodeType": "FunctionCall",
-                              "src": "1557:14:3",
+                              "src": "1590:14:3",
                               "tryCall": false,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bytes4",
@@ -5270,7 +5270,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "1545:27:3",
+                            "src": "1578:27:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
                               "typeString": "address"
@@ -5283,7 +5283,7 @@
                         },
                         "id": 893,
                         "nodeType": "ExpressionStatement",
-                        "src": "1538:34:3"
+                        "src": "1571:34:3"
                       }
                     ]
                   },
@@ -5305,7 +5305,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 873,
-                      "src": "1519:1:3",
+                      "src": "1552:1:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -5323,7 +5323,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1523:1:3",
+                      "src": "1556:1:3",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -5331,7 +5331,7 @@
                       },
                       "value": "0"
                     },
-                    "src": "1519:5:3",
+                    "src": "1552:5:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5350,7 +5350,7 @@
                         "nodeType": "VariableDeclaration",
                         "overrides": null,
                         "scope": 895,
-                        "src": "1485:9:3",
+                        "src": "1518:9:3",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -5361,7 +5361,7 @@
                           "id": 872,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1485:7:3",
+                          "src": "1518:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -5386,7 +5386,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 867,
-                            "src": "1497:4:3",
+                            "src": "1530:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                               "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -5400,7 +5400,7 @@
                           "memberName": "keyset",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": 688,
-                          "src": "1497:11:3",
+                          "src": "1530:11:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_set_$2192_storage",
                             "typeString": "struct LibSet_bytes4.set storage ref"
@@ -5414,7 +5414,7 @@
                         "memberName": "length",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 2204,
-                        "src": "1497:18:3",
+                        "src": "1530:18:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_struct$_set_$2192_storage_ptr_$returns$_t_uint256_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                           "typeString": "function (struct LibSet_bytes4.set storage pointer) view returns (uint256)"
@@ -5428,7 +5428,7 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1497:20:3",
+                      "src": "1530:20:3",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -5436,7 +5436,7 @@
                       }
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "1485:32:3"
+                    "src": "1518:32:3"
                   },
                   "loopExpression": {
                     "expression": {
@@ -5449,7 +5449,7 @@
                       "nodeType": "UnaryOperation",
                       "operator": "--",
                       "prefix": true,
-                      "src": "1526:3:3",
+                      "src": "1559:3:3",
                       "subExpression": {
                         "argumentTypes": null,
                         "id": 882,
@@ -5457,7 +5457,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 873,
-                        "src": "1528:1:3",
+                        "src": "1561:1:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -5470,10 +5470,10 @@
                     },
                     "id": 884,
                     "nodeType": "ExpressionStatement",
-                    "src": "1526:3:3"
+                    "src": "1559:3:3"
                   },
                   "nodeType": "ForStatement",
-                  "src": "1480:97:3"
+                  "src": "1513:97:3"
                 },
                 {
                   "expression": {
@@ -5490,7 +5490,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 867,
-                          "src": "1580:4:3",
+                          "src": "1613:4:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                             "typeString": "struct LibMap_bytes4_address.map storage pointer"
@@ -5504,7 +5504,7 @@
                         "memberName": "keyset",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 688,
-                        "src": "1580:11:3",
+                        "src": "1613:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_set_$2192_storage",
                           "typeString": "struct LibSet_bytes4.set storage ref"
@@ -5518,7 +5518,7 @@
                       "memberName": "clear",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2427,
-                      "src": "1580:17:3",
+                      "src": "1613:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_set_$2192_storage_ptr_$returns$_t_bool_$bound_to$_t_struct$_set_$2192_storage_ptr_$",
                         "typeString": "function (struct LibSet_bytes4.set storage pointer) returns (bool)"
@@ -5532,7 +5532,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1580:19:3",
+                    "src": "1613:19:3",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -5541,7 +5541,7 @@
                   },
                   "id": 902,
                   "nodeType": "ExpressionStatement",
-                  "src": "1580:19:3"
+                  "src": "1613:19:3"
                 },
                 {
                   "expression": {
@@ -5554,7 +5554,7 @@
                     "kind": "bool",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1610:4:3",
+                    "src": "1643:4:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -5565,7 +5565,7 @@
                   "functionReturnParameters": 871,
                   "id": 904,
                   "nodeType": "Return",
-                  "src": "1603:11:3"
+                  "src": "1636:11:3"
                 }
               ]
             },
@@ -5588,7 +5588,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 906,
-                  "src": "1432:16:3",
+                  "src": "1465:16:3",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
@@ -5601,7 +5601,7 @@
                     "name": "map",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 693,
-                    "src": "1432:3:3",
+                    "src": "1465:3:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_map_$693_storage_ptr",
                       "typeString": "struct LibMap_bytes4_address.map"
@@ -5611,7 +5611,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1431:18:3"
+              "src": "1464:18:3"
             },
             "returnParameters": {
               "id": 871,
@@ -5624,7 +5624,7 @@
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
                   "scope": 906,
-                  "src": "1469:4:3",
+                  "src": "1502:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -5635,7 +5635,7 @@
                     "id": 869,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1469:4:3",
+                    "src": "1502:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -5645,20 +5645,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1468:6:3"
+              "src": "1501:6:3"
             },
             "scope": 907,
-            "src": "1417:201:3",
+            "src": "1450:201:3",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
         "scope": 908,
-        "src": "63:1557:3"
+        "src": "96:1557:3"
       }
     ],
-    "src": "0:1621:3"
+    "src": "33:1621:3"
   },
   "compiler": {
     "name": "solc",
@@ -5666,7 +5666,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-03-07T11:22:40.018Z",
+  "updatedAt": "2020-08-10T16:11:55.875Z",
   "devdoc": {
     "methods": {}
   },
