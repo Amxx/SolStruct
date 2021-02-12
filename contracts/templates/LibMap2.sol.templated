@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import './LibSet.<KEY>.sol';
 
@@ -21,15 +21,29 @@ library LibMap2_<KEY>_<VALUE1>_<VALUE2>
 		return _map.keyset.length();
 	}
 
-	function value1(map storage _map, <KEY> <KEY_LOCATION> _key)
+	function tryGet1(map storage _map, <KEY> <KEY_LOCATION> _key)
+	internal view returns (bool, <VALUE1> <VALUE1_LOCATION>)
+	{
+		return (contains(_map, _key), _map.values1[_key]);
+	}
+
+	function tryGet2(map storage _map, <KEY> <KEY_LOCATION> _key)
+	internal view returns (bool, <VALUE2> <VALUE2_LOCATION>)
+	{
+		return (contains(_map, _key), _map.values2[_key]);
+	}
+
+	function get1(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (<VALUE1> <VALUE1_LOCATION>)
 	{
+		require(contains(_map, _key), "LibMap2_<KEY>_<VALUE1>_<VALUE2>: key not found");
 		return _map.values1[_key];
 	}
 
-	function value2(map storage _map, <KEY> <KEY_LOCATION> _key)
+	function get2(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (<VALUE2> <VALUE2_LOCATION>)
 	{
+		require(contains(_map, _key), "LibMap2_<KEY>_<VALUE1>_<VALUE2>: key not found");
 		return _map.values2[_key];
 	}
 
@@ -43,7 +57,7 @@ library LibMap2_<KEY>_<VALUE1>_<VALUE2>
 	internal view returns (<KEY> <KEY_LOCATION>, <VALUE1> <VALUE1_LOCATION>, <VALUE2> <VALUE2_LOCATION>)
 	{
 		<KEY> <KEY_LOCATION> key = keyAt(_map, _index);
-		return (key, value1(_map, key), value2(_map, key));
+		return (key, _map.values1[key], _map.values2[key]);
 	}
 
 	function indexOf(map storage _map, <KEY> <KEY_LOCATION> _key)

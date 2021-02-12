@@ -1,5 +1,6 @@
+artifacts
+cache
 node_modules
-old
 
 __pycache__
 

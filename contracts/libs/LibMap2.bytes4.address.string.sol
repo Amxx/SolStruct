@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import './LibSet.bytes4.sol';
 
@@ -21,15 +21,29 @@ library LibMap2_bytes4_address_string
 		return _map.keyset.length();
 	}
 
-	function value1(map storage _map, bytes4  _key)
+	function tryGet1(map storage _map, bytes4  _key)
+	internal view returns (bool, address )
+	{
+		return (contains(_map, _key), _map.values1[_key]);
+	}
+
+	function tryGet2(map storage _map, bytes4  _key)
+	internal view returns (bool, string memory)
+	{
+		return (contains(_map, _key), _map.values2[_key]);
+	}
+
+	function get1(map storage _map, bytes4  _key)
 	internal view returns (address )
 	{
+		require(contains(_map, _key), "LibMap2_bytes4_address_string: key not found");
 		return _map.values1[_key];
 	}
 
-	function value2(map storage _map, bytes4  _key)
+	function get2(map storage _map, bytes4  _key)
 	internal view returns (string memory)
 	{
+		require(contains(_map, _key), "LibMap2_bytes4_address_string: key not found");
 		return _map.values2[_key];
 	}
 
@@ -43,7 +57,7 @@ library LibMap2_bytes4_address_string
 	internal view returns (bytes4 , address , string memory)
 	{
 		bytes4  key = keyAt(_map, _index);
-		return (key, value1(_map, key), value2(_map, key));
+		return (key, _map.values1[key], _map.values2[key]);
 	}
 
 	function indexOf(map storage _map, bytes4  _key)

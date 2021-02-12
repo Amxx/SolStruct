@@ -1,14 +1,12 @@
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import "../libs/LibSet.uint256.sol";
 
-contract TestSet
+contract SetMock
 {
 	using LibSet_uint256 for LibSet_uint256.set;
 
 	LibSet_uint256.set internal data;
-
-	constructor() public {}
 
 	function length  (              ) public view returns (uint256         ) { return data.length();         }
 	function at      (uint256 _index) public view returns (uint256         ) { return data.at(_index);       }

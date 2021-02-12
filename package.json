@@ -1,6 +1,6 @@
 {
   "name": "solstruct",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A library of templated solidity structures",
   "author": "Hadrien Croubois <hc@iex.ec>",
   "license": "MIT",
@@ -20,13 +20,20 @@
   ],
   "scripts": {
     "generate": "python scripts/generator.py",
-    "compile": "truffle compile",
-    "build": "yarn generate && yarn compile",
-    "clear": "rm -fv contracts/libs/* build/contracts/*"
+    "compile": "hardhat compile",
+    "build": "npm run generate && npm run compile",
+    "test": "hardhat test",
+    "clear": "rimraf artifacts cache contracts/libs/*"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-solhint": "^2.0.0",
+    "@nomiclabs/hardhat-truffle5": "^2.0.0",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
     "chai": "4.2.0",
+    "hardhat": "^2.0.10",
+    "hardhat-gas-reporter": "^1.0.4",
     "openzeppelin-test-helpers": "0.5.1",
-    "truffle": "5.1.39"
+    "rimraf": "^3.0.2",
+    "solidity-coverage": "^0.7.14"
   }
 }

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import './LibSet.bytes4.sol';
 
@@ -20,9 +20,16 @@ library LibMap_bytes4_address
 		return _map.keyset.length();
 	}
 
-	function value(map storage _map, bytes4  _key)
+	function tryGet(map storage _map, bytes4  _key)
+	internal view returns (bool, address )
+	{
+		return (contains(_map, _key), _map.values[_key]);
+	}
+
+	function get(map storage _map, bytes4  _key)
 	internal view returns (address )
 	{
+		require(contains(_map, _key), "LibMap_bytes4_address: key not found");
 		return _map.values[_key];
 	}
 
@@ -36,7 +43,7 @@ library LibMap_bytes4_address
 	internal view returns (bytes4 , address )
 	{
 		bytes4  key = keyAt(_map, _index);
-		return (key, value(_map, key));
+		return (key, _map.values[key]);
 	}
 
 	function indexOf(map storage _map, bytes4  _key)

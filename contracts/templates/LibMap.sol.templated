@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import './LibSet.<KEY>.sol';
 
@@ -20,9 +20,16 @@ library LibMap_<KEY>_<VALUE>
 		return _map.keyset.length();
 	}
 
-	function value(map storage _map, <KEY> <KEY_LOCATION> _key)
+	function tryGet(map storage _map, <KEY> <KEY_LOCATION> _key)
+	internal view returns (bool, <VALUE> <VALUE_LOCATION>)
+	{
+		return (contains(_map, _key), _map.values[_key]);
+	}
+
+	function get(map storage _map, <KEY> <KEY_LOCATION> _key)
 	internal view returns (<VALUE> <VALUE_LOCATION>)
 	{
+		require(contains(_map, _key), "LibMap_<KEY>_<VALUE>: key not found");
 		return _map.values[_key];
 	}
 
@@ -36,7 +43,7 @@ library LibMap_<KEY>_<VALUE>
 	internal view returns (<KEY> <KEY_LOCATION>, <VALUE> <VALUE_LOCATION>)
 	{
 		<KEY> <KEY_LOCATION> key = keyAt(_map, _index);
-		return (key, value(_map, key));
+		return (key, _map.values[key]);
 	}
 
 	function indexOf(map storage _map, <KEY> <KEY_LOCATION> _key)

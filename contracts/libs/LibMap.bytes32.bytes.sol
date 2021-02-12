@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import './LibSet.bytes32.sol';
 
@@ -20,9 +20,16 @@ library LibMap_bytes32_bytes
 		return _map.keyset.length();
 	}
 
-	function value(map storage _map, bytes32  _key)
+	function tryGet(map storage _map, bytes32  _key)
+	internal view returns (bool, bytes memory)
+	{
+		return (contains(_map, _key), _map.values[_key]);
+	}
+
+	function get(map storage _map, bytes32  _key)
 	internal view returns (bytes memory)
 	{
+		require(contains(_map, _key), "LibMap_bytes32_bytes: key not found");
 		return _map.values[_key];
 	}
 
@@ -36,7 +43,7 @@ library LibMap_bytes32_bytes
 	internal view returns (bytes32 , bytes memory)
 	{
 		bytes32  key = keyAt(_map, _index);
-		return (key, value(_map, key));
+		return (key, _map.values[key]);
 	}
 
 	function indexOf(map storage _map, bytes32  _key)

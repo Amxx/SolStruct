@@ -1,17 +1,16 @@
-pragma solidity >0.5.0 <0.8.0;
+pragma solidity >0.5.0 <0.9.0;
 
 import "../libs/LibMap.uint256.string.sol";
 
-contract TestMap
+contract MapMock
 {
 	using LibMap_uint256_string for LibMap_uint256_string.map;
 
 	LibMap_uint256_string.map internal data;
 
-	constructor() public {}
-
 	function length  (                                  ) public view returns (uint256               ) { return data.length();          }
-	function value   (uint256 _key                      ) public view returns (string memory         ) { return data.value(_key);       }
+	function tryGet  (uint256 _key                      ) public view returns (bool, string memory   ) { return data.tryGet(_key);      }
+	function get     (uint256 _key                      ) public view returns (string memory         ) { return data.get(_key);         }
 	function keyAt   (uint256 _index                    ) public view returns (uint256               ) { return data.keyAt(_index);     }
 	function at      (uint256 _index                    ) public view returns (uint256, string memory) { return data.at(_index);        }
 	function indexOf (uint256 _key                      ) public view returns (uint256               ) { return data.indexOf(_key);     }
